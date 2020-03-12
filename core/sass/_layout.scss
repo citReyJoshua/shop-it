@@ -20,7 +20,10 @@
   }
 
   &-large {
-    font-size: 1.3rem;
+    font-size: 130%;
+  }
+  &-bolder {
+    font-weight: bolder;
   }
 }
 
@@ -48,9 +51,12 @@
 .hero {
   display: flex;
   justify-content: space-around;
-  padding: 3em;
+  padding: 1em;
   align-items: center;
   @include elem(text) {
-    font-size: 5rem;
+    font-size: 4rem;
+  }
+  @include elem(item) {
+    margin: 0.3em;
   }
 }

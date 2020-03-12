@@ -61,7 +61,11 @@ body {
 }
 
 .font-large {
-  font-size: 1.3rem;
+  font-size: 130%;
+}
+
+.font-bolder {
+  font-weight: bolder;
 }
 
 .search {
@@ -93,13 +97,17 @@ body {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  padding: 3em;
+  padding: 1em;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
 .hero__text {
-  font-size: 5rem;
+  font-size: 4rem;
+}
+
+.hero__item {
+  margin: 0.3em;
 }
 /*# sourceMappingURL=main.css.map */
