@@ -46,3 +46,11 @@ $breakpoints: (
   display: $display;
   position: $pos;
 }
+
+body {
+  background-color: $color-primary;
+}
+
+@function font-mul($num) {
+  @return $num * 100;
+}

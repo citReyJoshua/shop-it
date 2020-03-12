@@ -1,0 +1,23 @@
+.nav {
+  background-color: transparent;
+  margin: 1em;
+  height: 10vh;
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  @include elem(item) {
+  }
+}
+
+.font {
+  &-8 {
+    font-weight: font-mul(8);
+  }
+
+  &-large {
+    font-size: 1.3rem;
+  }
+}
