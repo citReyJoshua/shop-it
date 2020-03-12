@@ -1,6 +1,6 @@
 .nav {
   background-color: transparent;
-  margin: 1em;
+  margin: 2em;
   height: 10vh;
   ul {
     display: flex;
@@ -9,6 +9,8 @@
     align-items: center;
   }
   @include elem(item) {
+    margin-right: 1em;
+    margin-left: 1em;
   }
 }
 
@@ -19,5 +21,36 @@
 
   &-large {
     font-size: 1.3rem;
+  }
+}
+
+.search {
+  background-color: $darkslategray;
+  color: $color-text;
+  padding: 0.2em;
+  border-radius: 0.6em;
+  @include elem(item) {
+    background-color: $darkslategray;
+    border: none;
+    font-weight: font-mul(6);
+    font-size: 105%;
+    margin-left: 0.5em;
+    &:hover {
+      border: none;
+    }
+  }
+}
+
+.img {
+  vertical-align: bottom;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-around;
+  padding: 3em;
+  align-items: center;
+  @include elem(text) {
+    font-size: 5rem;
   }
 }
