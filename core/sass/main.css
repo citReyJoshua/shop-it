@@ -89,6 +89,7 @@ body {
 
 .img {
   vertical-align: bottom;
+  cursor: pointer;
 }
 
 .hero {
