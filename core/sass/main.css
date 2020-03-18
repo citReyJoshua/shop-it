@@ -126,6 +126,8 @@ body {
       -ms-flex-pack: start;
           justify-content: start;
   background-color: white;
+  -webkit-box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
+          box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
   border-radius: 0.6em;
 }
 
@@ -210,10 +212,12 @@ footer {
   font-weight: bolder;
   background-color: #3b4445;
   cursor: pointer;
+  -webkit-box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
+          box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
 }
 
 .clr-black {
   font-weight: 900;
-  color: black;
+  color: black !important;
 }
 /*# sourceMappingURL=main.css.map */

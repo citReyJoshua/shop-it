@@ -71,6 +71,7 @@
   flex-wrap: wrap;
   justify-content: start;
   background-color: white;
+  box-shadow: $shadow-subtle;
   @include rounded;
   @include elem(product-name) {
     flex-grow: 1;
@@ -132,9 +133,10 @@ footer {
   font-weight: bolder;
   background-color: $darkslategray;
   cursor: pointer;
+  box-shadow: $shadow-subtle;
 }
 
 .clr-black {
   font-weight: 900;
-  color: black;
+  color: black !important;
 }
