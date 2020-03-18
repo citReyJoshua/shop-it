@@ -31,13 +31,14 @@
   background-color: $darkslategray;
   color: $color-text;
   padding: 0.2em;
-  border-radius: 0.6em;
+  @include rounded;
   @include elem(item) {
     background-color: $darkslategray;
     border: none;
     font-weight: font-mul(6);
     font-size: 105%;
     margin-left: 0.5em;
+    cursor: pointer;
     &:hover {
       border: none;
     }
@@ -54,10 +55,86 @@
   justify-content: space-around;
   padding: 1em;
   align-items: center;
+  height: 80vh;
   @include elem(text) {
     font-size: 4rem;
   }
   @include elem(item) {
     margin: 0.3em;
   }
+}
+
+.card {
+  display: flex;
+  width: 20vw;
+  height: 30vh;
+  flex-wrap: wrap;
+  justify-content: start;
+  background-color: white;
+  @include rounded;
+  @include elem(product-name) {
+    flex-grow: 1;
+    color: $color-text;
+    margin: 0 1em;
+    line-height: 1.1;
+    span {
+      color: $color-text;
+    }
+  }
+  @include elem(description) {
+    width: 10vw;
+    color: $color-text;
+    margin: 0.5em;
+  }
+  @include elem(image) {
+    margin: 0.5em;
+  }
+  @include elem(button) {
+    font-size: 150%;
+    flex-grow: 0.5;
+    margin: 0 0.5em;
+  }
+}
+.gallery {
+  margin-top: 5em;
+  &-items {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    min-width: 100%;
+  }
+  &__item {
+    @include push--auto;
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 20vh;
+}
+
+.product {
+  &-image {
+    margin-top: -50px;
+    width: 7.5vw;
+  }
+  &-price {
+    color: black;
+  }
+}
+
+.btn-buy {
+  padding: 0.5em 2em;
+  @include rounded;
+  border: none;
+  font-weight: bolder;
+  background-color: $darkslategray;
+  cursor: pointer;
+}
+
+.clr-black {
+  font-weight: 900;
+  color: black;
 }

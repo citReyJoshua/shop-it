@@ -12,6 +12,9 @@ $breakpoints: (
   "large": 1200px
 );
 
+@mixin rounded {
+  border-radius: 0.6em;
+}
 @mixin elem($name) {
   @at-root #{&}__#{$name} {
     @content;

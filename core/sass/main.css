@@ -81,6 +81,7 @@ body {
   font-weight: 600;
   font-size: 105%;
   margin-left: 0.5em;
+  cursor: pointer;
 }
 
 .search__item:hover {
@@ -102,6 +103,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: 80vh;
 }
 
 .hero__text {
@@ -110,5 +112,108 @@ body {
 
 .hero__item {
   margin: 0.3em;
+}
+
+.card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 20vw;
+  height: 30vh;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  background-color: white;
+  border-radius: 0.6em;
+}
+
+.card__product-name {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  color: #83888b;
+  margin: 0 1em;
+  line-height: 1.1;
+}
+
+.card__product-name span {
+  color: #83888b;
+}
+
+.card__description {
+  width: 10vw;
+  color: #83888b;
+  margin: 0.5em;
+}
+
+.card__image {
+  margin: 0.5em;
+}
+
+.card__button {
+  font-size: 150%;
+  -webkit-box-flex: 0.5;
+      -ms-flex-positive: 0.5;
+          flex-grow: 0.5;
+  margin: 0 0.5em;
+}
+
+.gallery {
+  margin-top: 5em;
+}
+
+.gallery-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  min-width: 100%;
+}
+
+.gallery__item {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 20vh;
+}
+
+.product-image {
+  margin-top: -50px;
+  width: 7.5vw;
+}
+
+.product-price {
+  color: black;
+}
+
+.btn-buy {
+  padding: 0.5em 2em;
+  border-radius: 0.6em;
+  border: none;
+  font-weight: bolder;
+  background-color: #3b4445;
+  cursor: pointer;
+}
+
+.clr-black {
+  font-weight: 900;
+  color: black;
 }
 /*# sourceMappingURL=main.css.map */
