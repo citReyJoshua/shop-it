@@ -42,9 +42,15 @@
     &:hover {
       border: none;
     }
+    &::focus {
+      outline: none;
+    }
   }
 }
-
+.btn-user {
+  border: none;
+  background-color: transparent;
+}
 .img {
   vertical-align: bottom;
   cursor: pointer;
@@ -114,6 +120,9 @@ footer {
   justify-content: space-evenly;
   align-items: center;
   height: 20vh;
+  margin-top: 3em;
+  background-color: $darkslategray;
+  text-align: center;
 }
 
 .product {
@@ -128,15 +137,52 @@ footer {
 
 .btn-buy {
   padding: 0.5em 2em;
-  @include rounded;
   border: none;
   font-weight: bolder;
   background-color: $darkslategray;
   cursor: pointer;
   box-shadow: $shadow-subtle;
+  transition: transform 80ms ease-in;
+  @include rounded;
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    transform: scale(0.95);
+  }
 }
 
 .clr-black {
   font-weight: 900;
   color: black !important;
+}
+
+.user-selection {
+  display: flex;
+  justify-content: space-between;
+}
+
+.selection {
+  @include elem(item) {
+    margin: 0.2em;
+    cursor: pointer;
+  }
+  @include elem(container) {
+    > a:before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 1.3px;
+      top: 100%;
+      left: 0;
+      background: $color-text;
+      transition: transform 0.5s;
+      transform: scaleX(0);
+      transform-origin: right;
+    }
+    > a:hover:before {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
 }

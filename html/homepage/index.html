@@ -23,19 +23,39 @@
           </a>
         </li>
         <li class="nav__item">
-          <div class="search">
+          <div class="search" id="search">
             <i class="fa fa-search search__item"></i>
-            <input
-              class="search__item"
-              type="text"
-              name="Search"
-              id="#search"
-              placeholder="Search"
-            />
+            <input class="search__item" type="text" placeholder="Search" />
           </div>
         </li>
-        <li class="nav__item font-8">
-          <img class="img" src="../../core/images/user.png" alt="User" />
+        <li class="nav__item font-8" style="display: flex;">
+          <ul
+            class="user-selection slide-left"
+            id="user-links"
+            style="display: none; margin-right: -70px;"
+          >
+            <li class="selection__container">
+              <a class="selection__item">User</a>
+            </li>
+            <li class="selection__container">
+              <a
+                href="../login-and-sign-up/log-in-and-sign-up.html"
+                class="selection__item"
+                >Login</a
+              >
+            </li>
+            <li class="selection__container">
+              <a
+                href="../login-and-sign-up/log-in-and-sign-up.html"
+                class="selection__item"
+                >Sign up
+              </a>
+            </li>
+          </ul>
+
+          <button class="btn-user" onclick="ToggleSlide()">
+            <img class="img" src="../../core/images/user.png" alt="User" />
+          </button>
         </li>
       </ul>
     </div>
@@ -88,7 +108,9 @@
       </ul>
     </div>
     <footer>
-      This is the footer
+      Made by Rey Joshua H. Macarat and Jonathan Jubeth Ollave <br />
+      © 2020 F1. All Rights Reserved.
     </footer>
   </body>
+  <script src="/core/js/main.js"></script>
 </html>
