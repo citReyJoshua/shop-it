@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Get Started!</title>
-    <link rel="stylesheet" href="/core/sass/account.css" />
+    <link rel="stylesheet" href="../../core/sass/account.css" />
   </head>
   <body>
     <div class="container" id="container">
       <div class="form-container sign-up-container">
-        <form action="/html/homepage/index.html">
+        <form action="../homepage/index.php">
           <h3>Create StylesWorth Account</h3>
           <span>or use your email for registration</span>
           <br />
@@ -20,7 +20,7 @@
         </form>
       </div>
       <div class="form-container sign-in-container">
-        <form action="/html/homepage/index.html">
+        <form action="../homepage/index.php">
           <h1>Sign in</h1>
           <span>or use your account</span>
           <br />
@@ -47,5 +47,5 @@
       </div>
     </div>
   </body>
-  <script src="/core/js/main.js"></script>
+  <script src="../../core/js/main.js"></script>
 </html>

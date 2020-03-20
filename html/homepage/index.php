@@ -11,14 +11,14 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="stylesheet" href="/core/sass/main.css" />
+    <link rel="stylesheet" href="../../core/sass/main.css" />
     <title>Stylesworth</title>
   </head>
   <body>
     <div class="nav">
       <ul>
         <li class="nav__item font-8 font-large">
-          <a href="/html/homepage/index.html">
+          <a href="./index.php">
             Stylesworth
           </a>
         </li>
@@ -88,7 +88,7 @@
           <div class="card">
             <div class="card__image">
               <img
-                src="/core/images/dress.png"
+                src="../../core/images/dress.png"
                 alt="product-image"
                 class="product-image"
               />
@@ -114,7 +114,7 @@
       <span class="close" onclick="Close()" id="close">&times;</span>
       <div class="modal__top">
         <img
-          src="/core/images/dress.png"
+          src="../../core/images/dress.png"
           alt="product-image"
           class="product-image--bigger"
         />
@@ -144,5 +144,5 @@
       © 2020 F1. All Rights Reserved.
     </footer>
   </body>
-  <script src="/core/js/main.js"></script>
+  <script src="../../core/js/main.js"></script>
 </html>
