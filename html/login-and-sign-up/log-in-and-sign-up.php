@@ -24,13 +24,9 @@
           <h1>Sign in</h1>
           <span>or use your account</span>
           <br />
-          <input
-            type="username"
-            placeholder="Username or email"
-            name="username"
-          />
+          <input type="username" placeholder="Username" name="username" />
           <input type="password" placeholder="Password" name="password" />
-          <button>Sign In</button>
+          <button name="submit" type="submit">Sign In</button>
         </form>
       </div>
       <div class="overlay-container">

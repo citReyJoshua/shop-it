@@ -87,14 +87,27 @@
     span {
       color: $color-text;
     }
+    @include mod(bigger) {
+      color: white;
+      font-size: 200%;
+      padding: 3em 1em 1em 1em;
+      span {
+        font-weight: 900;
+        font-size: 30px;
+      }
+    }
   }
   @include elem(description) {
     width: 10vw;
     color: $color-text;
     margin: 0.5em;
+    @include mod(bigger) {
+      margin: 1em;
+      font-size: 150%;
+    }
   }
   @include elem(image) {
-    margin: 0.5em;
+    margin: 0.2em;
   }
   @include elem(button) {
     font-size: 150%;
@@ -127,8 +140,12 @@ footer {
 
 .product {
   &-image {
-    margin-top: -50px;
-    width: 7.5vw;
+    margin-top: -40px;
+    width: 8vw;
+    @include mod(bigger) {
+      width: 10em;
+      margin-bottom: -100px;
+    }
   }
   &-price {
     color: black;
@@ -184,5 +201,91 @@ footer {
       transform: scaleX(1);
       transform-origin: left;
     }
+  }
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  width: 30vw;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: $color-modal;
+  box-shadow: $shadow-subtle;
+  border-top-left-radius: 1em;
+  border-bottom-left-radius: 1em;
+  @include elem(top) {
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+    height: 35%;
+    background-color: $color-top;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.close {
+  color: white;
+  top: 0;
+  left: 0;
+  position: absolute;
+  margin-left: 0.5em;
+  font-size: 28px;
+  font-weight: bold;
+  transition: transform 0.8s;
+}
+
+.close:hover,
+.close:focus {
+  cursor: pointer;
+  transform: rotate(180deg);
+}
+
+.btn-modal {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  border-bottom-left-radius: 1em;
+  border: none;
+  padding: 0.7em;
+  color: rgba(24, 24, 24, 0.822);
+  cursor: pointer;
+  font-size: 150%;
+  font-weight: 900;
+  &:focus {
+    outline: none;
+  }
+}
+
+.titles {
+  display: flex;
+  justify-content: center;
+  font-size: 3em;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#snackbar {
+  visibility: hidden;
+  display: flex;
+  width: 100%;
+  padding: 2em;
+  text-align: center;
+  margin: 0 auto;
+  position: fixed;
+  bottom: 0;
+  justify-content: center;
+  @include elem(content) {
+    width: 15vw;
+    @include rounded;
+    padding: 1em;
+    color: $darkslategray;
+    background-color: rgba(248, 232, 232, 0.801);
+  }
+  &.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
   }
 }

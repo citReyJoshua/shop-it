@@ -39,14 +39,14 @@
             </li>
             <li class="selection__container">
               <a
-                href="../login-and-sign-up/log-in-and-sign-up.html"
+                href="../login-and-sign-up/log-in-and-sign-up.php"
                 class="selection__item"
                 >Login</a
               >
             </li>
             <li class="selection__container">
               <a
-                href="../login-and-sign-up/log-in-and-sign-up.html"
+                href="../login-and-sign-up/log-in-and-sign-up.php"
                 class="selection__item"
                 >Sign up
               </a>
@@ -79,6 +79,9 @@
         />
       </div>
     </div>
+    <div class="titles">
+      Products
+    </div>
     <div class="gallery">
       <ul class="gallery-items">
         <li class="gallery__item">
@@ -99,13 +102,42 @@
               <span class="clr-black"> P500</span>
             </div>
             <div class="card__button">
-              <button class="btn-buy">
+              <button class="btn-buy" onclick="ToggleModal()">
                 BUY NOW
               </button>
             </div>
           </div>
         </li>
       </ul>
+    </div>
+    <div class="modal" id="modal">
+      <span class="close" onclick="Close()" id="close">&times;</span>
+      <div class="modal__top">
+        <img
+          src="/core/images/dress.png"
+          alt="product-image"
+          class="product-image--bigger"
+        />
+      </div>
+
+      <div class="card__product-name--bigger">
+        Designer<br />
+        <span>
+          P500
+        </span>
+      </div>
+      <div class="card__description--bigger">
+        Lorem ipsum cannot help me in this stupid world of great trouble that im
+        having today.
+      </div>
+      <button class="btn-modal" onclick="Snack()">
+        BUY
+      </button>
+    </div>
+    <div id="snackbar">
+      <div id="snackbar__content">
+        Purchase Complete
+      </div>
     </div>
     <footer>
       Made by Rey Joshua H. Macarat and Jonathan Jubeth Ollave <br />
