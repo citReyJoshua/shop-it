@@ -1,3 +1,9 @@
+<?php
+  session_start();
+  $con = mysqli_connect("localhost","root","","OnlineShop");
+  $flag = isset($_SESSION["Username"]);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +18,17 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="../../core/sass/main.css" />
-    <title>Stylesworth</title>
+    <title>
+      <?php
+        if($flag){
+          $Username = $_SESSION["Username"];
+          echo 'Welcome '. strtoupper($Username). "!";
+        }
+        else{
+          echo 'Stylesworth';
+        } 
+      ?>
+    </title>
   </head>
   <body>
     <div class="nav">
@@ -51,6 +67,16 @@
                 >Sign up
               </a>
             </li>
+            <?php
+              if($flag){
+                echo '<li class="selection__container">
+                        <a class="selection__item" href="logout.php" name="logout">
+                          Log out
+                        </a>
+                      </li>';
+              }
+            ?>
+
           </ul>
 
           <button class="btn-user" onclick="ToggleSlide()">
@@ -84,30 +110,38 @@
     </div>
     <div class="gallery">
       <ul class="gallery-items">
-        <li class="gallery__item">
-          <div class="card">
-            <div class="card__image">
-              <img
-                src="../../core/images/dress.png"
-                alt="product-image"
+
+        <?php
+          $sql = "select ProductName, Price, Image,Description from Product";
+          $result = mysqli_query($con, $sql);
+          
+          while($result_row = $result->fetch_assoc()){
+            echo '<li class="gallery__item">
+                <div class="card">
+                <div class="card__image">
+                <img
+                src="../../core/images/' . $result_row['Image'] . 
+                '"alt="product-image"
                 class="product-image"
-              />
-            </div>
-            <div class="card__description">
-              Lorem ipsum cannot help me in this stupid world of great trouble
-              that im having today.
-            </div>
-            <div class="card__product-name">
-              Designer<br />
-              <span class="clr-black"> P500</span>
-            </div>
-            <div class="card__button">
-              <button class="btn-buy" onclick="ToggleModal()">
-                BUY NOW
-              </button>
-            </div>
-          </div>
-        </li>
+                />' . '</div>
+                <div class="card__description">' . $result_row['Description'] .
+                '</div>
+                <div class="card__product-name">
+                  '. $result_row['ProductName'] . '<br />
+                  <span class="clr-black"> $' . $result_row['Price'] .
+                '</span>
+                </div>
+                <div class="card__button">
+                  <button class="btn-buy" onclick="ToggleModal()">
+                    BUY NOW
+                  </button>
+                </div>
+              </div>
+            </li>';
+          }
+          
+        ?>
+        
       </ul>
     </div>
     <div class="modal" id="modal">

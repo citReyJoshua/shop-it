@@ -10,7 +10,7 @@ li {
   color: white;
   vertical-align: baseline;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 table {
@@ -43,14 +43,14 @@ body {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .nav__item {
@@ -109,11 +109,11 @@ body {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   padding: 1em;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   height: 80vh;
 }
 
@@ -132,20 +132,21 @@ body {
   width: 20vw;
   height: 30vh;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
+  -ms-flex-pack: start;
+  justify-content: start;
   background-color: white;
   -webkit-box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
-          box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
+  box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
+  margin-bottom: 4em;
   border-radius: 0.6em;
 }
 
 .card__product-name {
   -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
   color: #83888b;
   margin: 0 1em;
   line-height: 1.1;
@@ -184,8 +185,8 @@ body {
 .card__button {
   font-size: 150%;
   -webkit-box-flex: 0.5;
-      -ms-flex-positive: 0.5;
-          flex-grow: 0.5;
+  -ms-flex-positive: 0.5;
+  flex-grow: 0.5;
   margin: 0 0.5em;
 }
 
@@ -198,10 +199,10 @@ body {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   min-width: 100%;
 }
 
@@ -215,11 +216,11 @@ footer {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   height: 20vh;
   margin-top: 3em;
   background-color: #3b4445;
@@ -247,7 +248,7 @@ footer {
   background-color: #3b4445;
   cursor: pointer;
   -webkit-box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
-          box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
+  box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
   -webkit-transition: -webkit-transform 80ms ease-in;
   transition: -webkit-transform 80ms ease-in;
   transition: transform 80ms ease-in;
@@ -261,7 +262,7 @@ footer {
 
 .btn-buy:active {
   -webkit-transform: scale(0.95);
-          transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .clr-black {
@@ -274,8 +275,8 @@ footer {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .selection__item {
@@ -296,16 +297,16 @@ footer {
   transition: transform 0.5s;
   transition: transform 0.5s, -webkit-transform 0.5s;
   -webkit-transform: scaleX(0);
-          transform: scaleX(0);
+  transform: scaleX(0);
   -webkit-transform-origin: right;
-          transform-origin: right;
+  transform-origin: right;
 }
 
 .selection__container > a:hover:before {
   -webkit-transform: scaleX(1);
-          transform: scaleX(1);
+  transform: scaleX(1);
   -webkit-transform-origin: left;
-          transform-origin: left;
+  transform-origin: left;
 }
 
 .modal {
@@ -317,7 +318,7 @@ footer {
   right: 0;
   background-color: #727d80;
   -webkit-box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
-          box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
+  box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
   border-top-left-radius: 1em;
   border-bottom-left-radius: 1em;
 }
@@ -331,11 +332,11 @@ footer {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .close {
@@ -356,7 +357,7 @@ footer {
 .close:focus {
   cursor: pointer;
   -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .btn-modal {
@@ -381,8 +382,8 @@ footer {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   font-size: 3em;
   font-weight: 600;
   cursor: pointer;
@@ -400,8 +401,8 @@ footer {
   position: fixed;
   bottom: 0;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 #snackbar__content {
@@ -415,33 +416,33 @@ footer {
 #snackbar.show {
   visibility: visible;
   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-          animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
 .slide-left {
   -webkit-animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-          animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 @-webkit-keyframes slide-left {
   0% {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
   }
   100% {
     -webkit-transform: translateX(-100px);
-            transform: translateX(-100px);
+    transform: translateX(-100px);
   }
 }
 
 @keyframes slide-left {
   0% {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
   }
   100% {
     -webkit-transform: translateX(-100px);
-            transform: translateX(-100px);
+    transform: translateX(-100px);
   }
 }
 
