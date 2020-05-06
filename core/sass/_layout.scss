@@ -30,21 +30,24 @@
 .search {
   background-color: $darkslategray;
   color: $color-text;
-  padding: 0.2em;
+  padding: 0.2em 0.5em;
   @include rounded;
   @include elem(item) {
     background-color: $darkslategray;
     border: none;
     font-weight: font-mul(6);
     font-size: 105%;
-    margin-left: 0.5em;
-    cursor: pointer;
     &:hover {
-      border: none;
+      border:none;
     }
-    &::focus {
+    &:focus {
       outline: none;
     }
+  }
+  button{
+    cursor: pointer;
+    border:none;
+    background-color: $darkslategray;
   }
 }
 .btn-user {
@@ -149,7 +152,7 @@ footer {
     }
   }
   &-price {
-    color: black;
+    color:black;
   }
 }
 
@@ -290,3 +293,63 @@ footer {
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
   }
 }
+.cart-page{
+  display:flex;
+  .cart-list{
+    width:50%;
+  }
+  .checkout{
+    width: 40%;
+    height: max-content;
+    margin-top: 6%;
+    background-color:white;
+    box-shadow: $shadow-subtle;
+    @include rounded;
+    margin-left: 3%;
+    &-content{
+      // margin: 10px 10px;
+      padding: 20px 20px 40px 20px;
+      h2{
+        width: 50%;
+        background-color: $darkslategray; 
+        border-radius: 30px;
+        margin: 20px auto;
+        padding:3px 0;
+        text-align: center;
+      }
+      th,td,.prodname,.total{
+        color: $darkslategray;
+        text-align: left;
+        font-size: 1.3em;
+        padding:5px;
+      }
+      .prodname{
+        padding-right: 160px;
+      }
+      table{
+        margin:5px 50px;
+      }
+      hr{
+        width:75%;
+        margin:0 45px;
+        
+      }
+      .total{
+        padding-right: 120px;
+        margin:5px 10px 5px 50px;
+      }
+      .sum{
+        color: $darkslategray;
+      }
+      button{
+        float:right;
+        margin:30px 0;
+        position: relative;
+        right: 10px;
+      }
+    }
+    
+  }
+}
+
+
