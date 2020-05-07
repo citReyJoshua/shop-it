@@ -348,7 +348,14 @@ footer {
         right: 10px;
       }
     }
-    
+  }
+}
+.seller{
+  h1{
+    background-color: white;
+    color: $darkslategray;
+    border-radius: 30px;
+    width: fit-content;
   }
 }
 

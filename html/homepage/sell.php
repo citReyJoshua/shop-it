@@ -87,6 +87,8 @@
       </ul>
     </div>
     </div>
+
+    <div class="seller">
     <?php
     if($flag){
         $sql = "select ProductName, Price, Image,Description,quantity,seller  from Product where seller = '$_SESSION[Username]'";
@@ -151,6 +153,7 @@
                 <input style="color:black" type="submit" name="submit" value="submit">
             </form>
         </div>
+    </div>
     </div>
     <footer>
       Made by Rey Joshua H. Macarat and Jonathan Jubeth Ollave <br />
