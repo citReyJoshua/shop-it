@@ -159,6 +159,7 @@
       Made by Rey Joshua H. Macarat and Jonathan Jubeth Ollave <br />
       © 2020 F1. All Rights Reserved.
     </footer>
+    <script src="../../core/js/main.js"></script>
     <script>
         const addProductButton = document.getElementById("addProductButton");
         const modalsell = document.getElementById("modalsell");
