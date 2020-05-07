@@ -234,7 +234,7 @@ footer {
   color: white;
   top: 0;
   left: 0;
-  position: absolute;
+  position: relative;
   margin-left: 0.5em;
   font-size: 28px;
   font-weight: bold;
@@ -351,11 +351,81 @@ footer {
   }
 }
 .seller{
+  margin: 0 auto;
+  background-color:white;
+  box-shadow: $shadow-subtle;
+  @include rounded;
+  padding: 70px;
+  width: fit-content;
+  td,th{
+    padding: 20px;
+    text-align: center;
+    border:1px solid #ccc;
+  }
+  td:hover{
+    border:2px solid rgb(6, 230, 6);
+    cursor: pointer;
+  }
+  th{
+    font-size: 1.3em;
+  }
   h1{
-    background-color: white;
-    color: $darkslategray;
-    border-radius: 30px;
+    background-color: $darkslategray;
+    color: white; 
+    @include rounded;
     width: fit-content;
+    padding: 10px 40px 10px 10px;
+    box-shadow: $shadow-subtle;
+  }
+  table{
+    background-color:$darkslategray;
+  }
+  button{
+    float:right;
+    margin: 20px;
+  }
+  .modalsell{
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1;
+    display:none;
+    &-content{
+      background-color: white;
+      padding: 10px 30px 30px 30px;
+      margin: 5% auto;
+      width: 40%;
+      @include rounded;
+      box-shadow: $shadow-subtle;
+      input{
+        border: 1px solid black;
+        @include rounded;
+        width: 95%;
+        padding: 10px;
+        margin:10px auto;
+      }
+      .close{
+        color: black;
+      }
+      h2{
+        background-color: $darkslategray;
+        color: white; 
+        @include rounded;
+        width: fit-content;
+        padding: 10px 20px;
+        margin: 0 auto;
+        box-shadow: $shadow-subtle;
+      }
+      form{
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+      }
+    }
   }
 }
 

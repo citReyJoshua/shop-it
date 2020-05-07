@@ -39,9 +39,10 @@
         </li>
         <li class="nav__item">
           <div class="search" id="search">
-            <i class="fa fa-search search__item"></i>
+            
             <form action="search.php" method="post">
             <input class="search__item" type="text" placeholder="Search" />
+            <button type="submit"><i class="fa fa-search search__item"></i></button>
             </form>
           </div>
         </li>
@@ -91,33 +92,25 @@
     <div class="seller">
     <?php
     if($flag){
-        $sql = "select ProductName, Price, Image,Description,quantity,seller  from Product where seller = '$_SESSION[Username]'";
+        $sql = "select ProductName, Price, Image,Description,quantity  from Product where seller = '$_SESSION[Username]'";
         $result = mysqli_query($con,$sql);
     echo '<h1>&emsp;HI! '.$_SESSION['Username'].'!<br>&emsp;HERE\'S THE PRODUCTS YOU ARE SELLING</h1><br>';
-    echo '<br>&ensp;&emsp;<button id="addProductButton" style="font-size:1em;
-            background-color:green;
-            padding:5px;border:none;
-            cursor:pointer">
-            add product
-            <i class="fa fa-plus-square" style="font-size:1.3em"></i>
-            </button><table>';
+    echo '<br>&ensp;&emsp;';
+    echo '<table>';
     echo '<tr>
-        <td style="padding:10px 35px">ProductName</td>
-        <td style="padding:10px 35px">Image</td>
-        <td style="padding:10px 35px">Price</td>
-        <td style="padding:10px 35px">Description</td>
-        <td style="padding:10px 35px">Quantity</td>
-        <td style="padding:10px 35px">Seller</td>';
+        <th>PRODUCT NAME</td>
+        <th>IMAGE</td>
+        <th>PRICE</td>
+        <th>DESCRIPTION</td>
+        <th>QUANTITY</td>';
     ;
     while($result_row = $result->fetch_assoc()){
         echo '<tr>
-              <td style="padding:10px 35px">'. $result_row['ProductName'].'</td>'
-            .'<td style="padding:10px 35px">'. $result_row['Image'].'</td>'
-            .'<td style="padding:10px 35px">'.$result_row['Price'].'</td>'
-            .'<td style="padding:10px 35px">', $result_row['Description'].'</td>'
-            .'<td style="padding:10px 35px">', $result_row['quantity'].
-            '<i class="fa fa-plus-square" style="font-size:1.3em;cursor:pointer;margin:0 0 0 5px"></i></td>'
-            .'<td style="padding:10px 35px">'.$result_row['seller'].'</td>'
+              <td>'. $result_row['ProductName'].'</td>'
+            .'<td>'. $result_row['Image'].'</td>'
+            .'<td>'.$result_row['Price'].'</td>'
+            .'<td>', $result_row['Description'].'</td>'
+            .'<td>', $result_row['quantity']
             .'</tr>';
     }
     
@@ -125,35 +118,21 @@
     
     }
     ?>
-    <div class="modalsell" id="modalsell" 
-    style=
-    "top: 0;
-    left:0;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 1;
-    display:none;
-    ">
-        <div class="modalsell-content" id="modalsell-content"
-        style="
-        background-color: white;
-        padding: 5%;
-        margin: 10% auto;
-        width: 50%;
-        ">
-        <span class="close" onclick="Close()" id="close">&times;</span>
+    <div class="modalsell" id="modalsell">
+        <div class="modalsell-content" id="modalsell-content">
+          <span class="close" onclick="Close()" id="close">&times;</span>
+          <h2>ENTER PRODUCT DETAILS</h2>
             <form action="addsell.php" method="post">
                 <input style="color:black" type="text" name="prodname" placeholder="Product Name">
                 <input style="color:black" type="text" name="image" placeholder="Image">
                 <input style="color:black" type="number" name="price" placeholder="Price">
+                <input style="color:black" type="number" name="quantity" placeholder="Quantity">
                 <input style="color:black" type="text" name="description" placeholder="Description">
-                <input style="color:black" type="submit" name="submit" value="submit">
+                <button type="submit" class="btn-buy">submit</button>
             </form>
         </div>
     </div>
+    <button class="btn-buy" id="addProductButton"><i class="fa fa-plus-square"> add product </i></button>
     </div>
     <footer>
       Made by Rey Joshua H. Macarat and Jonathan Jubeth Ollave <br />
