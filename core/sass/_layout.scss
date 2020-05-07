@@ -362,8 +362,9 @@ footer {
     text-align: center;
     border:1px solid #ccc;
   }
+  
   td:hover{
-    border:2px solid rgb(6, 230, 6);
+    border:2px solid #f4f4f4;
     cursor: pointer;
   }
   th{
@@ -403,7 +404,7 @@ footer {
       box-shadow: $shadow-subtle;
       input{
         border: 1px solid black;
-        @include rounded;
+        border-radius:30px;
         width: 95%;
         padding: 10px;
         margin:10px auto;
@@ -427,6 +428,19 @@ footer {
       }
     }
   }
+#ProductID{
+  button{
+    color: black;
+    cursor: pointer;
+  }
+  padding:0;
+  margin:0;
+  vertical-align: middle;
+  cursor: default;
+  &:hover{
+    border:1px solid #ccc;
+  }
+}
 }
 
 

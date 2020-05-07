@@ -514,7 +514,7 @@ footer {
 }
 
 .seller td:hover {
-  border: 2px solid #06e606;
+  border: 2px solid #f4f4f4;
   cursor: pointer;
 }
 
@@ -567,7 +567,7 @@ footer {
 
 .seller .modalsell-content input {
   border: 1px solid black;
-  border-radius: 0.6em;
+  border-radius: 30px;
   width: 95%;
   padding: 10px;
   margin: 10px auto;
@@ -599,6 +599,22 @@ footer {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.seller #ProductID {
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+  cursor: default;
+}
+
+.seller #ProductID button {
+  color: black;
+  cursor: pointer;
+}
+
+.seller #ProductID:hover {
+  border: 1px solid #ccc;
 }
 
 .slide-left {

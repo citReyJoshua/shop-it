@@ -92,25 +92,32 @@
     <div class="seller">
     <?php
     if($flag){
-        $sql = "select ProductName, Price, Image,Description,quantity  from Product where seller = '$_SESSION[Username]'";
+        $sql = "select ProductName, Price, Image,Description,quantity,ProductID  from Product where seller = '$_SESSION[Username]'";
         $result = mysqli_query($con,$sql);
     echo '<h1>&emsp;HI! '.$_SESSION['Username'].'!<br>&emsp;HERE\'S THE PRODUCTS YOU ARE SELLING</h1><br>';
     echo '<br>&ensp;&emsp;';
+    echo '<p style="color:black">*click on the desired field in your product to edit*</p>
+          <p style="color:black">Note: you can only edit one at a time</p>';
     echo '<table>';
     echo '<tr>
-        <th>PRODUCT NAME</td>
-        <th>IMAGE</td>
-        <th>PRICE</td>
-        <th>DESCRIPTION</td>
-        <th>QUANTITY</td>';
+        <th>PRODUCT NAME</th>
+        <th>IMAGE</th>
+        <th>PRICE</th>
+        <th>DESCRIPTION</th>
+        <th>QUANTITY</th>';
     ;
     while($result_row = $result->fetch_assoc()){
         echo '<tr>
-              <td>'. $result_row['ProductName'].'</td>'
-            .'<td>'. $result_row['Image'].'</td>'
-            .'<td>'.$result_row['Price'].'</td>'
-            .'<td>', $result_row['Description'].'</td>'
-            .'<td>', $result_row['quantity']
+              <td id="ProductName">'. $result_row['ProductName'].'</td>'
+            .'<td id="Image">'. $result_row['Image'].'</td>'
+            .'<td id="Price">$'.$result_row['Price'].'</td>'
+            .'<td id="Description">', $result_row['Description'].'</td>'
+            .'<td id="quantity">', $result_row['quantity'].'</td>'
+            // .'<td id="ProductID">', $result_row['ProductID'].'</td>'
+            .'<td id="ProductID">
+            <form action="deletesell.php" method="post" >
+            <button class="delete" name="deleteID" value="'.$result_row['ProductID'].'">delete</button>
+            </form></td>'
             .'</tr>';
     }
     
@@ -138,19 +145,65 @@
       Made by Rey Joshua H. Macarat and Jonathan Jubeth Ollave <br />
       © 2020 F1. All Rights Reserved.
     </footer>
-    <script src="../../core/js/main.js"></script>
+    <!-- <script src="../../core/js/main.js"></script> -->
     <script>
         const addProductButton = document.getElementById("addProductButton");
         const modalsell = document.getElementById("modalsell");
+        const seller = document.querySelector('.seller');
 
         addProductButton.addEventListener("click",() => {
             modalsell.style.display = "block";
+        });
+
+        flag = true;//this flag prevent multiple edits
+        seller.addEventListener("click",() => {
+          if(event.target.tagName === 'TD' && event.target.id!=='ProductID' && flag){
+            var id = event.target.parentElement.lastChild.querySelector('form').querySelector('button').value;
+            console.log(id);
+            var temp = event.target.textContent;
+            var style = "color:black";
+            var style2 = "color:black;width:30%";
+            event.target.textContent = "";
+            var form = document.createElement('form');
+            form.action = "update-sell.php";
+            form.method = "post";
+            event.target.appendChild(form);
+            hiddenInput = document.createElement('input');
+            hiddenInput.type = "hidden";
+            hiddenInput.name = "columnname";
+            hiddenInput.value = event.target.id;
+            if(event.target.id==='quantity'||event.target.id==='Price')
+            form.innerHTML = '<input type="number" name="input" style="'+style2+'" value="'+temp+'">';
+            else
+            form.innerHTML = '<input type="text" name="input" style="'+style+'" value="'+temp+'">';
+            form.appendChild(hiddenInput);
+            var cancel = document.createElement('button');
+            cancel.innerHTML = "cancel";
+            form.appendChild(cancel);
+            cancel.type="button";
+            var confirm = document.createElement('button');
+            confirm.innerHTML = "confirm";
+            confirm.type = "submit";
+            form.appendChild(confirm);
+            cancel.style.margin='0';
+            cancel.style.color='black'
+            cancel.style.cursor="pointer";
+            confirm.style.cursor="pointer";
+            confirm.style.margin='0';
+            confirm.style.color='black';
+            confirm.name = "id";
+            confirm.value = id;
+            flag = false;
+            cancel.addEventListener("click",()=>{ location.reload();});
+          }
         });
         function Close() {
         let modal = document.getElementById("modalsell");
 
         modal.style.display = "none";
         }
+        
+        
     </script>
   </body>
   
