@@ -295,6 +295,18 @@ footer {
 }
 .cart-page{
   display:flex;
+  .hcart{
+    display: flex;
+    justify-content: center;
+    h1{
+      color: $darkslategray;
+      background-color: white;
+      @include rounded;
+      box-shadow: $shadow-subtle;
+      text-align: center;
+      width: 30%;
+    }
+  }
   .cart-list{
     width:50%;
   }
@@ -307,13 +319,15 @@ footer {
     @include rounded;
     margin-left: 3%;
     &-content{
-      // margin: 10px 10px;
-      padding: 20px 20px 40px 20px;
+      display:flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
       h2{
         width: 50%;
         background-color: $darkslategray; 
         border-radius: 30px;
-        margin: 20px auto;
+        margin: 50px auto;
         padding:3px 0;
         text-align: center;
       }
@@ -324,10 +338,7 @@ footer {
         padding:5px;
       }
       .prodname{
-        padding-right: 160px;
-      }
-      table{
-        margin:5px 50px;
+        padding-right: 220px;
       }
       hr{
         width:75%;
@@ -335,17 +346,14 @@ footer {
         
       }
       .total{
-        padding-right: 120px;
-        margin:5px 10px 5px 50px;
+        padding-right: 180px;
       }
       .sum{
         color: $darkslategray;
       }
       button{
-        float:right;
-        margin:30px 0;
-        position: relative;
-        right: 10px;
+        margin: 40px auto;
+        width: 35%;
       }
     }
   }

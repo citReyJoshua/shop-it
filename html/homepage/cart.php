@@ -31,21 +31,27 @@
     </title>
   </head>
   <body>
-    <div class="nav">
+  <div class="nav">
       <ul>
         <li class="nav__item font-8 font-large">
           <a href="./index.php">
             Stylesworth
           </a>
+          
         </li>
+        
         <li class="nav__item">
+        
           <div class="search" id="search" >
+          
             <form action="search.php" method="post">
             <input class="search__item" type="text" placeholder="Search" name="search"/>
             <button type="submit"><i class="fa fa-search search__item"></i></button>
             </form>
           </div>
+          
         </li>
+        
         <li class="nav__item font-8" style="display: flex;">
           <ul
             class="user-selection slide-left"
@@ -75,21 +81,38 @@
                         <a class="selection__item" href="logout.php" name="logout">
                           Log out
                         </a>
-                      </li>';
+                      </li>
+                      <li class="selection__container">
+                        <a class="selection__item" href="sell.php">
+                          SELL
+                        </a>
+                      </li>
+                      <li class="selection__container">
+                        <a class="selection__item" href="cart.php">
+                          <i class="fa fa-shopping-cart"></i>
+                        </a>
+                      </li>
+                      ';
               }
             ?>
 
           </ul>
+
           <button class="btn-user" onclick="ToggleSlide()">
+            
             <img class="img" src="../../core/images/user.png" alt="User" />
           </button>
+          
         </li>
       </ul>
+      
     </div>
     <div class="cart-page">
     <div class="cart-list">
 
-    <!-- <h1>CART</h1> -->
+    <div class="hcart">
+      <h1>YOUR CART</h1>
+    </div>
 
     <div class="gallery">
     <ul class="gallery-items">
@@ -165,5 +188,18 @@
       Made by Rey Joshua H. Macarat and Jonathan Jubeth Ollave <br />
       © 2020 F1. All Rights Reserved.
     </footer>
+    <script>
+    function ToggleSlide() {
+      let element = document.getElementById("user-links");
+      let search = document.getElementById("search");
+      if (element.style.display === "none") {
+        search.style.marginRight = "-70px";
+        element.style.display = "flex";
+      } else {
+        search.style.marginRight = "0";
+        element.style.display = "none";
+      }
+    }
+    </script>
   </body>
 </html>

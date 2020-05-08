@@ -40,7 +40,7 @@
         <li class="nav__item">
           <div class="search" id="search">
             <form action="search.php" method="post">
-            <input class="search__item" type="text" placeholder="Search" />
+            <input class="search__item" type="text" name="search" placeholder="Search" />
             <button type="submit"><i class="fa fa-search search__item"></i></button>
             </form>
           </div>
@@ -74,7 +74,18 @@
                         <a class="selection__item" href="logout.php" name="logout">
                           Log out
                         </a>
-                      </li>';
+                      </li>
+                      <li class="selection__container">
+                        <a class="selection__item" href="sell.php">
+                          SELL
+                        </a>
+                      </li>
+                      <li class="selection__container">
+                        <a class="selection__item" href="cart.php">
+                          <i class="fa fa-shopping-cart"></i>
+                        </a>
+                      </li>
+                      ';
               }
             ?>
 
@@ -96,6 +107,7 @@
 
         <?php
           $search = $_POST['search'];
+          if($search!=""){
           $sql = "select ProductName, Price, Image,Description from Product where ProductName LIKE '%$search%' ";
           $result = mysqli_query($con, $sql) or die($con->error);
           
@@ -123,7 +135,7 @@
               </div>
             </li>';
           }
-          
+        }
         ?>
         
       </ul>

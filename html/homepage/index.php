@@ -85,6 +85,11 @@
                       </li>
                       <li class="selection__container">
                         <a class="selection__item" href="cart.php">
+                          SELL
+                        </a>
+                      </li>
+                      <li class="selection__container">
+                        <a class="selection__item" href="sell.php">
                           <i class="fa fa-shopping-cart"></i>
                         </a>
                       </li>
