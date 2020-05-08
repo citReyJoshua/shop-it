@@ -30,8 +30,7 @@
       ?>
     </title>
   </head>
-  <body>
-  <a href="sell.php">SELL</a> 
+  <body> 
     <div class="nav">
       <ul>
         <li class="nav__item font-8 font-large">
@@ -84,12 +83,12 @@
                         </a>
                       </li>
                       <li class="selection__container">
-                        <a class="selection__item" href="cart.php">
+                        <a class="selection__item" href="sell.php">
                           SELL
                         </a>
                       </li>
                       <li class="selection__container">
-                        <a class="selection__item" href="sell.php">
+                        <a class="selection__item" href="cart.php">
                           <i class="fa fa-shopping-cart"></i>
                         </a>
                       </li>
