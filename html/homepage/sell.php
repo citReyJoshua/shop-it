@@ -131,7 +131,6 @@
             .'<td id="Price">$'.$result_row['Price'].'</td>'
             .'<td id="Description">', $result_row['Description'].'</td>'
             .'<td id="quantity">', $result_row['quantity'].'</td>'
-            // .'<td id="ProductID">', $result_row['ProductID'].'</td>'
             .'<td id="ProductID">
             <form action="deletesell.php" method="post" >
             <button class="delete" name="deleteID" value="'.$result_row['ProductID'].'">delete</button>

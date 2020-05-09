@@ -11,7 +11,13 @@
   @include elem(item) {
     margin-right: 1em;
     margin-left: 1em;
+    ul{
+      li{
+        border-left: 1px solid white;
+      }
+    }
   }
+  
 }
 
 .font {
@@ -185,7 +191,7 @@ footer {
 
 .selection {
   @include elem(item) {
-    margin: 0.2em;
+    margin: 0.4em;
     cursor: pointer;
   }
   @include elem(container) {
@@ -450,5 +456,56 @@ footer {
   }
 }
 }
-
+.modal-checkout{
+  top: 0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1;
+  display:none;
+  &-content{
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:white;
+    margin: 5% auto;
+    width: 55%;
+    @include rounded;
+    box-shadow: $shadow-subtle;
+    .close{
+      color:black;
+      position: relative;
+      left: -45%;
+    }
+    h2{
+      width: 40%;
+      background-color: $darkslategray; 
+      border-radius: 30px;
+      margin: 10px auto;
+      padding:3px 0;
+      text-align: center;
+    }
+    .address,.contact{
+      background-color: $darkslategray; 
+      @include rounded;
+      box-shadow: $shadow-subtle;
+      padding: 20px;
+      width:70%;
+      margin: 20px;
+      h3{
+        font-size: 1.4em;
+      }
+    }
+    button{
+      width:20%;
+      margin:20px;
+      position: relative;
+      left:180px;
+    }
+  }
+}
 

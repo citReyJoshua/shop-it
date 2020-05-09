@@ -28,6 +28,10 @@ signInButton.addEventListener("click", () => {
   container.classList.remove("right-panel-active");
 });
 
+signUpButton.addEventListener("click", () => {
+  container.classList.add("right-panel-active");
+});
+
 function Close() {
   let modal = document.getElementById("modal");
 

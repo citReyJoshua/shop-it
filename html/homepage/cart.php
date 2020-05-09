@@ -140,7 +140,7 @@
                 '</span>
                 </div>
                 <div class="card__button">
-                  <form action="removetocart.php" method = "post">
+                  <form action="removefromcart.php" method = "post">
                   <button type="submit" class="btn-buy" onclick="ToggleModal()" name="cid" value = "'.$result_row['cartID'].'">
                     remove
                   </button>
@@ -176,14 +176,34 @@
         }
         echo "</table>";
         echo "<hr><h1 class='sum'><span class='total'>TOTAL</span>$".$sum."</h1>";
-        echo "<button class='btn-buy'>checkout</button>";
+        echo "<button class='btn-buy' id='checkoutbtn'>checkout</button>";
       }
       ?>
       
     </div>
   </div>
   </div>
-
+      <div class="modal-checkout" id="modalCheckout">
+        <div class="modal-checkout-content">
+        <span class="close" onclick="Close()" id="close">&times;</span>
+          <h2>CONTACT ADDRESS</h2>
+          <?php
+            if($flag){
+              $sql = "select Email,Address,Contact from user where username = '$username'";
+              $result = mysqli_query($con, $sql)->fetch_assoc() or die($con->error);
+              echo "<div class='address'>"
+              ."<p>your item will be delivered to this address:</p>"
+              ."<h3>".$result['Address']."</h3></div>"
+              ."<div class='contact'>"
+              ."<p>we will be contacting you throught this contact details</p>"
+              ."<h3>Contact number :".$result['Contact']."</h3>"
+              ."<h3>Email : ".$result['Email']."</h3>"
+              ."</div>";
+            }
+          ?>
+          <button class="btn-buy">confirm</button>
+        </div>
+      </div>
     <footer>
       Made by Rey Joshua H. Macarat and Jonathan Jubeth Ollave <br />
       © 2020 F1. All Rights Reserved.
@@ -199,6 +219,13 @@
         search.style.marginRight = "0";
         element.style.display = "none";
       }
+      
+    }
+    document.getElementById("checkoutbtn").addEventListener("click",()=>{
+      document.getElementById("modalCheckout").style.display="block";
+    })
+    function Close(){
+      document.getElementById("modalCheckout").style.display="none";
     }
     </script>
   </body>

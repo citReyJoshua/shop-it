@@ -58,6 +58,10 @@ body {
   margin-left: 1em;
 }
 
+.nav__item ul li {
+  border-left: 1px solid white;
+}
+
 .font-8 {
   font-weight: 800;
 }
@@ -284,7 +288,7 @@ footer {
 }
 
 .selection__item {
-  margin: 0.2em;
+  margin: 0.4em;
   cursor: pointer;
 }
 
@@ -639,6 +643,74 @@ footer {
 
 .seller #ProductID:hover {
   border: 1px solid #ccc;
+}
+
+.modal-checkout {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  display: none;
+}
+
+.modal-checkout-content {
+  padding: 20px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: white;
+  margin: 5% auto;
+  width: 55%;
+  border-radius: 0.6em;
+  -webkit-box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
+          box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
+}
+
+.modal-checkout-content .close {
+  color: black;
+  position: relative;
+  left: -45%;
+}
+
+.modal-checkout-content h2 {
+  width: 40%;
+  background-color: #3b4445;
+  border-radius: 30px;
+  margin: 10px auto;
+  padding: 3px 0;
+  text-align: center;
+}
+
+.modal-checkout-content .address, .modal-checkout-content .contact {
+  background-color: #3b4445;
+  border-radius: 0.6em;
+  -webkit-box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
+          box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
+  padding: 20px;
+  width: 70%;
+  margin: 20px;
+}
+
+.modal-checkout-content .address h3, .modal-checkout-content .contact h3 {
+  font-size: 1.4em;
+}
+
+.modal-checkout-content button {
+  width: 20%;
+  margin: 20px;
+  position: relative;
+  left: 180px;
 }
 
 .slide-left {

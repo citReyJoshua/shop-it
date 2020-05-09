@@ -16,6 +16,8 @@
           <input type="text" placeholder="Username" name="SignUpUsername"/>
           <input type="email" placeholder="Email" name="Email"/>
           <input type="password" placeholder="Password" name="SignUpPassword" />
+          <input type="text" placeholder="Address" name="Address" />
+          <input type="text" placeholder="Contact no." name="Contact" />
           <button name="register" type="submit">Sign Up</button>
         </form>
       </div>
@@ -135,6 +137,8 @@ else if(isset($_POST["register"])){
     $Username=$_POST['SignUpUsername'];
     $password=$_POST['SignUpPassword'];
     $Email =$_POST['Email'];
+    $Address = $_POST['Address'];
+    $Contact = $_POST['Contact'];
     
   
 
@@ -143,7 +147,7 @@ else if(isset($_POST["register"])){
     $row =mysqli_fetch_array($result);
     
     if($row["count"]==0){
-      $sql= "insert into User values (NULL,'$Username','$Email','$password')";
+      $sql= "insert into User values (NULL,'$Username','$Email','$password','$Address','$Contact')";
       mysqli_query($con, $sql) or die("Username not added to database");
       header('Location: ../login-and-sign-up/log-in-and-sign-up.php');
     } else {
