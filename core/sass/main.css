@@ -79,6 +79,8 @@ body {
   color: #83888b;
   padding: 0.2em 0.5em;
   border-radius: 0.6em;
+  -webkit-box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
+          box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
 }
 
 .search__item {
@@ -494,7 +496,7 @@ footer {
   text-align: center;
 }
 
-.cart-page .checkout-content th, .cart-page .checkout-content td, .cart-page .checkout-content .prodname, .cart-page .checkout-content .total {
+.cart-page .checkout-content th, .cart-page .checkout-content td, .cart-page .checkout-content .prodname {
   color: #3b4445;
   text-align: left;
   font-size: 1.3em;
@@ -511,16 +513,24 @@ footer {
 }
 
 .cart-page .checkout-content .total {
-  padding-right: 180px;
+  padding-right: 210px;
+  color: #3b4445;
+  text-align: left;
+  margin-left: 10px;
 }
 
 .cart-page .checkout-content .sum {
   color: #3b4445;
+  text-align: left;
 }
 
 .cart-page .checkout-content button {
   margin: 40px auto;
   width: 35%;
+}
+
+.cart-page .checkout-content select {
+  background-color: #3b4445;
 }
 
 .seller {
@@ -593,12 +603,17 @@ footer {
           box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
 }
 
-.seller .modalsell-content input {
+.seller .modalsell-content input[type=text], .seller .modalsell-content input[type=number] {
   border: 1px solid black;
   border-radius: 30px;
   width: 95%;
   padding: 10px;
   margin: 10px auto;
+}
+
+.seller .modalsell-content label, .seller .modalsell-content input[type=file] {
+  margin-left: 20px;
+  color: black;
 }
 
 .seller .modalsell-content .close {

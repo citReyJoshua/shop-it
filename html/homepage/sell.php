@@ -148,10 +148,11 @@
           <h2>ENTER PRODUCT DETAILS</h2>
             <form action="addsell.php" method="post">
                 <input style="color:black" type="text" name="prodname" placeholder="Product Name">
-                <input style="color:black" type="text" name="image" placeholder="Image">
                 <input style="color:black" type="number" name="price" placeholder="Price">
                 <input style="color:black" type="number" name="quantity" placeholder="Quantity">
                 <input style="color:black" type="text" name="description" placeholder="Description">
+                <label style="color:black" for="image">Image</label>
+                <input type="file" accept='image/*' name="image" placeholder="Image">
                 <button type="submit" class="btn-buy">submit</button>
             </form>
         </div>
@@ -174,9 +175,9 @@
 
         flag = true;//this flag prevent multiple edits
         seller.addEventListener("click",() => {
-          if(event.target.tagName === 'TD' && event.target.id!=='ProductID' && flag){
+          if(event.target.tagName === 'TD' && event.target.id!=='ProductID' && flag && event.target.id !== "Image"){
             var id = event.target.parentElement.lastChild.querySelector('form').querySelector('button').value;
-            console.log(id);
+            console.log(event.target.id);
             var temp = event.target.textContent;
             var style = "color:black";
             var style2 = "color:black;width:30%";
@@ -212,6 +213,27 @@
             confirm.value = id;
             flag = false;
             cancel.addEventListener("click",()=>{ location.reload();});
+          }
+          else if(event.target.id === "Image"){
+            var id = event.target.parentElement.lastChild.querySelector('form').querySelector('button').value;
+            var form = document.createElement('form');
+            form.action = 'uploadimg.php';
+            form.method = 'post';
+            event.target.appendChild(form);
+            var input = document.createElement('input');
+            input.type = 'file';
+            input.name = 'img';
+            input.accept = 'image/*';
+            form.appendChild(input);
+            var button = document.createElement('button');
+            button.innerHTML = 'submit';
+            button.type = 'submit';
+            button.name = "id";
+            button.value = id;
+            button.style.margin = '0';
+            button.style.padding = '0';
+            button.style.color = 'black';
+            form.appendChild(button);
           }
         });
 

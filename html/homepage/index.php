@@ -128,7 +128,7 @@
       </div>
     </div>
     <div class="titles">
-      Products
+      <a href="products.php">Products</a>
     </div>
     <div class="gallery">
       <ul class="gallery-items">

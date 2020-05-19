@@ -176,9 +176,25 @@
         }
         echo "</table>";
         echo "<hr><h1 class='sum'><span class='total'>TOTAL</span>$".$sum."</h1>";
+        
+
+        $sql = "select CompanyName,rate from Shipping";
+        $result = mysqli_query($con, $sql) or die($con->error);
+
+        
+        echo "<div class='shipping'>
+        
+        <select>";
+        while($result_row = $result->fetch_assoc()){
+          echo "<option value='".$result_row['CompanyName']."'>".$result_row['CompanyName']." rate: $".$result_row['rate']."</option>";
+        }
+        echo "</select></div>";
+
         echo "<button class='btn-buy' id='checkoutbtn'>checkout</button>";
       }
       ?>
+      
+
       
     </div>
   </div>
@@ -195,7 +211,7 @@
               ."<p>your item will be delivered to this address:</p>"
               ."<h3>".$result['Address']."</h3></div>"
               ."<div class='contact'>"
-              ."<p>we will be contacting you throught this contact details</p>"
+              ."<p>we will be contacting you through this contact details</p>"
               ."<h3>Contact number :".$result['Contact']."</h3>"
               ."<h3>Email : ".$result['Email']."</h3>"
               ."</div>";
