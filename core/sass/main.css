@@ -513,15 +513,15 @@ footer {
 }
 
 .cart-page .checkout-content .total {
-  padding-right: 210px;
+  padding-right: 270px;
   color: #3b4445;
   text-align: left;
   margin-left: 10px;
 }
 
 .cart-page .checkout-content .sum {
+  font-size: 1.5em;
   color: #3b4445;
-  text-align: left;
 }
 
 .cart-page .checkout-content button {
@@ -529,8 +529,49 @@ footer {
   width: 35%;
 }
 
+.cart-page .checkout-content .shipping {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 20px 50px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.cart-page .checkout-content label {
+  color: #3b4445;
+  font-size: 0.7em;
+  font-weight: bold;
+  padding: 5px 10px;
+  width: 60%;
+}
+
 .cart-page .checkout-content select {
   background-color: #3b4445;
+}
+
+.cart-page .checkout-content .totalAmount {
+  font-size: 0.9em;
+}
+
+.cart-page .checkout-content .totalAmount .totalamounttr {
+  border-radius: 0.6em;
+  -webkit-box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
+          box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
+  background-color: #e0dddd;
+  padding: 10px;
+  font-size: 1.5em;
+}
+
+.cart-page .checkout-content .totalAmount .th {
+  padding-right: 150px;
+}
+
+.cart-page .checkout-content .totalAmount td {
+  padding-left: 35px;
 }
 
 .seller {
@@ -685,7 +726,7 @@ footer {
       -ms-flex-align: center;
           align-items: center;
   background-color: white;
-  margin: 5% auto;
+  margin: 2% auto;
   width: 55%;
   border-radius: 0.6em;
   -webkit-box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
@@ -718,7 +759,7 @@ footer {
 }
 
 .modal-checkout-content .address h3, .modal-checkout-content .contact h3 {
-  font-size: 1.4em;
+  font-size: 1.1em;
 }
 
 .modal-checkout-content button {

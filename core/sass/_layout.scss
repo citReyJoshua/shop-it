@@ -352,21 +352,50 @@ footer {
         margin:0 45px;
       }
       .total{
-        padding-right: 210px;
+        padding-right: 270px;
         color:$darkslategray;
         text-align: left;
         margin-left: 10px;
       }
       .sum{
+        font-size: 1.5em;
         color: $darkslategray;
-        text-align: left;
       }
       button{
         margin: 40px auto;
         width: 35%;
       }
+      .shipping{
+        display: flex;
+        align-items: center;
+        margin: 20px 50px;
+        justify-content: space-around;
+      }
+      label{
+        color: $darkslategray;
+        font-size: 0.7em;
+        font-weight: bold;
+        padding: 5px 10px;
+        width: 60%;
+      }
       select{
         background-color: $darkslategray;
+      }
+      .totalAmount{
+        font-size: 0.9em;
+        .totalamounttr{
+          @include rounded;
+          box-shadow: $shadow-subtle;
+          background-color: rgb(224, 221, 221);
+          padding: 10px;
+          font-size: 1.5em;
+        }
+        .th{
+          padding-right: 150px;
+        }
+        td{
+          padding-left: 35px;
+        }
       }
     }
   }
@@ -483,7 +512,7 @@ footer {
     flex-direction: column;
     align-items: center;
     background-color:white;
-    margin: 5% auto;
+    margin: 2% auto;
     width: 55%;
     @include rounded;
     box-shadow: $shadow-subtle;
@@ -508,7 +537,7 @@ footer {
       width:70%;
       margin: 20px;
       h3{
-        font-size: 1.4em;
+        font-size: 1.1em;
       }
     }
     button{

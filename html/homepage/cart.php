@@ -31,6 +31,7 @@
     </title>
   </head>
   <body>
+  <i class='fa fa-map-marker-alt'></i>
   <div class="nav">
       <ul>
         <li class="nav__item font-8 font-large">
@@ -167,7 +168,9 @@
         <th>Price</th>
         ";
         $sum = 0;
+        $items = 0;
         while($result_row = $result->fetch_assoc()){
+          $items++;
           $sum+=$result_row['Price'];
             echo '<tr>
             <td class="prodname">'.$result_row['ProductName'].'</td>
@@ -183,18 +186,50 @@
 
         
         echo "<div class='shipping'>
-        
-        <select>";
+        <label>PLEASE SELECT A SHIPPING COMPANY TO SHIP YOUR PRODUCT</label>
+        <form action='' method='post'>
+        <select name='shippingCo' onchange='this.form.submit()'>";
+        "</form></div>";
         while($result_row = $result->fetch_assoc()){
-          echo "<option value='".$result_row['CompanyName']."'>".$result_row['CompanyName']." rate: $".$result_row['rate']."</option>";
+          echo "<option 
+          id ='".$result_row['CompanyName']."'
+          value='".$result_row['CompanyName']."'>".$result_row['CompanyName']." rate: $".$result_row['rate']."</option>";
         }
-        echo "</select></div>";
-
+        echo "</select>";
+        echo "</form></div>";
+        if(isset($_POST['shippingCo'])){
+          $shippingCo = $_POST['shippingCo'];
+          echo "<script>
+          document.getElementById('".$shippingCo."').selected = true;
+          </script>";
+        }
+        else{
+          $_POST['shippingCo'] = 'UPS';
+          $shippingCo = $_POST['shippingCo'];
+        }
+        $sql = "select rate from shipping where CompanyName ='$shippingCo' ";
+        $result = mysqli_query($con, $sql)->fetch_assoc()['rate'];
+        $totalAmount = $sum + $result;
+        echo "<div class='totalAmount'>
+          <table>
+            <tr>
+              <td class='th'>Subtotal (".$items." items):</td>
+              <td>$".$sum."</td>
+            </tr>
+            <tr>
+              <td class='th'>Shipping Fee:</td>
+              <td>$".$result."</td>
+            </tr>
+            <tr class='totalamounttr'>
+              <td class='th'>Total Amount:</td>
+              <td>$".$totalAmount."</td>
+            </tr>
+          </table>
+        </div>";
         echo "<button class='btn-buy' id='checkoutbtn'>checkout</button>";
       }
       ?>
       
-
       
     </div>
   </div>
@@ -209,6 +244,7 @@
               $result = mysqli_query($con, $sql)->fetch_assoc() or die($con->error);
               echo "<div class='address'>"
               ."<p>your item will be delivered to this address:</p>"
+              // ."<i class='fas fa-map-marker-alt'></i>"
               ."<h3>".$result['Address']."</h3></div>"
               ."<div class='contact'>"
               ."<p>we will be contacting you through this contact details</p>"
@@ -243,6 +279,9 @@
     function Close(){
       document.getElementById("modalCheckout").style.display="none";
     }
+      // var selectTag = document.querySelector('select');
+      // selectTag.value = '<\?php echo ".$_POST["shippingCo"].";\?>';
+      // document.getElementById(selectTag.value).selected = true;
     </script>
   </body>
 </html>
