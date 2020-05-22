@@ -3,6 +3,7 @@
   $con = mysqli_connect("localhost","root","","OnlineShop");
   $flag = isset($_SESSION["Username"]);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +13,7 @@
       href="https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap"
       rel="stylesheet"
     />
-    <link
+    <link 
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
@@ -29,22 +30,28 @@
       ?>
     </title>
   </head>
-  <body>
+  <body> 
     <div class="nav">
       <ul>
         <li class="nav__item font-8 font-large">
           <a href="./index.php">
             Stylesworth
           </a>
+          
         </li>
+        
         <li class="nav__item">
-          <div class="search" id="search">
+        
+          <div class="search" id="search" >
+          
             <form action="search.php" method="post">
-            <input class="search__item" type="text" name="search" placeholder="Search" />
+            <input class="search__item" type="text" placeholder="Search" name="search"/>
             <button type="submit"><i class="fa fa-search search__item"></i></button>
             </form>
           </div>
+          
         </li>
+        
         <li class="nav__item font-8" style="display: flex;">
           <ul
             class="user-selection slide-left"
@@ -94,87 +101,46 @@
           </ul>
 
           <button class="btn-user" onclick="ToggleSlide()">
+            
             <img class="img" src="../../core/images/user.png" alt="User" />
           </button>
+          
         </li>
       </ul>
+      
     </div>
-    </div>
-
-    <div class="titles">
-      <a href="products.php">Products</a>
-    </div>
-    <div class="gallery">
-      <ul class="gallery-items">
-
-        <?php
-          $search = $_POST['search'];
-          if($search!=""){
-          $sql = "select ProductName, Price, Image,Description from Product where ProductName LIKE '%$search%' ";
-          $result = mysqli_query($con, $sql) or die($con->error);
-          
-          while($result_row = $result->fetch_assoc()){
-            echo '<li class="gallery__item">
-                <div class="card">
-                <div class="card__image">
-                <img
-                src="../../core/images/' . $result_row['Image'] . 
-                '"alt="product-image"
-                class="product-image"
-                />' . '</div>
-                <div class="card__description">' . $result_row['Description'] .
-                '</div>
-                <div class="card__product-name">
-                  '. $result_row['ProductName'] . '<br />
-                  <span class="clr-black"> $' . $result_row['Price'] .
-                '</span>
-                </div>
-                <div class="card__button">
-                  <button class="btn-buy" onclick="ToggleModal()">
-                    Add to cart
-                  </button>
-                </div>
-              </div>
-            </li>';
-          }
+    <div class="myAccount">
+        <a href="orders.php">My orders</a>
+    <?php
+        $Username = $_SESSION['Username'];
+        $sql = "select * from user where Username = '$Username'";
+        $result = mysqli_query($con,$sql);
+        echo "<table>";
+        while($result_row = $result->fetch_assoc()){
+            echo "<tr>
+                <td>Username:</td>
+                <td>".$result_row['Username']."</td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td>".$result_row['Email']."</td>
+            </tr>
+            <tr>
+                <td>address:</td>
+                <td>".$result_row['Address']."</td>
+            </tr>
+            <tr>
+                <td>Contact:</td>
+                <td>".$result_row['Contact']."</td>
+            </tr>";
         }
-        ?>
-        
-      </ul>
-    </div>
-    <div class="modal" id="modal">
-      <span class="close" onclick="Close()" id="close">&times;</span>
-      <div class="modal__top">
-        <img
-          src="../../core/images/dress.png"
-          alt="product-image"
-          class="product-image--bigger"
-        />
-      </div>
-
-      <div class="card__product-name--bigger">
-        Designer<br />
-        <span>
-          P500
-        </span>
-      </div>
-      <div class="card__description--bigger">
-        Lorem ipsum cannot help me in this stupid world of great trouble that im
-        having today.
-      </div>
-      <button class="btn-modal" onclick="Snack()">
-        BUY
-      </button>
-    </div>
-    <div id="snackbar">
-      <div id="snackbar__content">
-        Purchase Complete
-      </div>
+        echo "</table>";
+    ?>
     </div>
     <footer>
       Made by Rey Joshua H. Macarat and Jonathan Jubeth Ollave <br />
       © 2020 F1. All Rights Reserved.
     </footer>
-  </body>
-  <script src="../../core/js/main.js"></script>
+    <script src="../../core/js/main.js"></script>
+  </body> 
 </html>

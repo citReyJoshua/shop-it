@@ -2,8 +2,17 @@
   session_start();
   $con = mysqli_connect("localhost","root","","OnlineShop");
   $flag = isset($_SESSION["Username"]);
+  $username = $_SESSION['Username'];
+  $id =  mysqli_query($con, "select userid from user where username = '$username'")->fetch_assoc()['userid'];
+  $count = mysqli_query($con, "select count(*) as count from cart")->fetch_assoc()['count'];
+  if(!$count){
+    echo "<script>
+    alert('your cart is empty, go shopping?');
+    window.location.href = 'products.php'
+    </script>";
+  }
 ?>
-
+<script></script>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -31,7 +40,6 @@
     </title>
   </head>
   <body>
-  <i class='fa fa-map-marker-alt'></i>
   <div class="nav">
       <ul>
         <li class="nav__item font-8 font-large">
@@ -60,7 +68,9 @@
             style="display: none; margin-right: -70px;"
           >
             <li class="selection__container">
-              <a class="selection__item">User</a>
+              <a 
+                href="myaccount.php"
+                class="selection__item">My Account</a>
             </li>
             <li class="selection__container">
               <a
@@ -118,9 +128,7 @@
     <div class="gallery">
     <ul class="gallery-items">
     <?php
-    if($flag){
-        $username = $_SESSION['Username'];
-        $id =  mysqli_query($con, "select userid from user where username = '$username'")->fetch_assoc()['userid'];
+    if($flag && $count){
         $sql = "select cartID,ProductName, Price, Image,Description from Product p join cart c where c.userid = '$id' and p.ProductID = c.ProductID";
         $result = mysqli_query($con, $sql) or die($con->error);
         
@@ -162,7 +170,7 @@
 
       <?php
       $result = mysqli_query($con, $sql) or die($con->error);
-      if($flag){
+      if($flag && $count ){
         echo "<table>
         <th>Product</th>
         <th>Price</th>
@@ -181,7 +189,7 @@
         echo "<hr><h1 class='sum'><span class='total'>TOTAL</span>$".$sum."</h1>";
         
 
-        $sql = "select CompanyName,rate from Shipping";
+        $sql = "select * from Shipping";
         $result = mysqli_query($con, $sql) or die($con->error);
 
         
@@ -193,7 +201,7 @@
         while($result_row = $result->fetch_assoc()){
           echo "<option 
           id ='".$result_row['CompanyName']."'
-          value='".$result_row['CompanyName']."'>".$result_row['CompanyName']." rate: $".$result_row['rate']."</option>";
+          value='".$result_row['CompanyName']."'>".$result_row['CompanyName']." rate: $".$result_row['rate']." (".$result_row['deliveryTime']." days)</option>";
         }
         echo "</select>";
         echo "</form></div>";
@@ -207,6 +215,7 @@
           $_POST['shippingCo'] = 'UPS';
           $shippingCo = $_POST['shippingCo'];
         }
+        $_SESSION['shippingCo'] = $shippingCo;
         $sql = "select rate from shipping where CompanyName ='$shippingCo' ";
         $result = mysqli_query($con, $sql)->fetch_assoc()['rate'];
         $totalAmount = $sum + $result;
@@ -244,7 +253,6 @@
               $result = mysqli_query($con, $sql)->fetch_assoc() or die($con->error);
               echo "<div class='address'>"
               ."<p>your item will be delivered to this address:</p>"
-              // ."<i class='fas fa-map-marker-alt'></i>"
               ."<h3>".$result['Address']."</h3></div>"
               ."<div class='contact'>"
               ."<p>we will be contacting you through this contact details</p>"
@@ -253,7 +261,7 @@
               ."</div>";
             }
           ?>
-          <button class="btn-buy">confirm</button>
+          <button class="btn-buy" id="confirm-checkout">confirm</button>
         </div>
       </div>
     <footer>
@@ -279,9 +287,9 @@
     function Close(){
       document.getElementById("modalCheckout").style.display="none";
     }
-      // var selectTag = document.querySelector('select');
-      // selectTag.value = '<\?php echo ".$_POST["shippingCo"].";\?>';
-      // document.getElementById(selectTag.value).selected = true;
+    document.querySelector("#confirm-checkout").addEventListener("click",()=>{
+      window.location.href = ("http://localhost/git-shopit/Source%20Code/stylesworth-%20Online%20Fashion%20Shop/html/homepage/checkout.php")
+    })
     </script>
   </body>
 </html>

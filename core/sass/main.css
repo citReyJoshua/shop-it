@@ -513,9 +513,8 @@ footer {
 }
 
 .cart-page .checkout-content .total {
-  padding-right: 270px;
+  padding-right: 250px;
   color: #3b4445;
-  text-align: left;
   margin-left: 10px;
 }
 
@@ -536,25 +535,31 @@ footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 20px 50px;
+  margin: 20px 0;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  width: 77%;
+  padding: 5px;
 }
 
 .cart-page .checkout-content label {
-  color: #3b4445;
-  font-size: 0.7em;
-  font-weight: bold;
+  font-size: 0.75em;
   padding: 5px 10px;
-  width: 60%;
+  color: #3b4445;
+  font-weight: bold;
 }
 
 .cart-page .checkout-content select {
   background-color: #3b4445;
+  margin-left: 10px;
 }
 
 .cart-page .checkout-content .totalAmount {
   font-size: 0.9em;
+}
+
+.cart-page .checkout-content .totalAmount table {
+  margin-left: 40px;
 }
 
 .cart-page .checkout-content .totalAmount .totalamounttr {
@@ -562,16 +567,11 @@ footer {
   -webkit-box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
           box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
   background-color: #e0dddd;
-  padding: 10px;
   font-size: 1.5em;
 }
 
 .cart-page .checkout-content .totalAmount .th {
   padding-right: 150px;
-}
-
-.cart-page .checkout-content .totalAmount td {
-  padding-left: 35px;
 }
 
 .seller {
@@ -759,7 +759,7 @@ footer {
 }
 
 .modal-checkout-content .address h3, .modal-checkout-content .contact h3 {
-  font-size: 1.1em;
+  font-size: 1.3em;
 }
 
 .modal-checkout-content button {
@@ -767,6 +767,102 @@ footer {
   margin: 20px;
   position: relative;
   left: 180px;
+}
+
+.orders ul {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 30px 50px;
+  margin: 0 20px;
+}
+
+.orders li {
+  background-color: white;
+  color: #3b4445;
+  padding: 10px;
+  border-radius: 0.6em;
+  -webkit-box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
+          box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
+  position: relative;
+}
+
+.orders p, .orders .nameprice {
+  color: #3b4445;
+}
+
+.orders .pimage {
+  margin: 10px 0;
+  width: 70px;
+}
+
+.orders .nameprice {
+  top: 70px;
+  left: 100px;
+  position: absolute;
+  font-size: 1.2em;
+}
+
+.orders .oship {
+  position: absolute;
+  right: 15px;
+  color: black;
+  font-size: 0.9em;
+}
+
+.orders .delivered, .orders .tobeDelivered {
+  color: white;
+  text-align: center;
+  border-radius: 30px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-style: italic;
+}
+
+.orders .delivered {
+  background-color: green;
+  width: 20%;
+}
+
+.orders .tobeDelivered {
+  background-color: orange;
+  width: 30%;
+}
+
+.orders h1 {
+  color: #3b4445;
+  background-color: white;
+  -webkit-box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
+          box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
+  border-radius: 30px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 20px auto;
+  padding: 5px 10px;
+}
+
+.myAccount td {
+  padding: 20px;
+  border: 1px solid;
+}
+
+.myAccount a {
+  border: 1px solid;
+  margin-left: 20px;
+  padding: 5px 10px;
+}
+
+.myAccount a:hover {
+  background-color: white;
+  color: #3b4445;
+  font-weight: bold;
+}
+
+.myAccount table {
+  margin: 20px;
 }
 
 .slide-left {

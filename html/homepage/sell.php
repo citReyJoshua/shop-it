@@ -58,7 +58,9 @@
             style="display: none; margin-right: -70px;"
           >
             <li class="selection__container">
-              <a class="selection__item">User</a>
+              <a 
+                href="myaccount.php"
+                class="selection__item">My Account</a>
             </li>
             <li class="selection__container">
               <a

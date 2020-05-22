@@ -352,9 +352,8 @@ footer {
         margin:0 45px;
       }
       .total{
-        padding-right: 270px;
+        padding-right: 250px;
         color:$darkslategray;
-        text-align: left;
         margin-left: 10px;
       }
       .sum{
@@ -368,33 +367,35 @@ footer {
       .shipping{
         display: flex;
         align-items: center;
-        margin: 20px 50px;
+        margin: 20px 0;
         justify-content: space-around;
+        width: 77%;
+        padding: 5px;
       }
       label{
-        color: $darkslategray;
-        font-size: 0.7em;
-        font-weight: bold;
+        font-size: 0.75em;
         padding: 5px 10px;
-        width: 60%;
+        color: $darkslategray;
+        font-weight: bold;
       }
       select{
         background-color: $darkslategray;
+        margin-left: 10px;
       }
       .totalAmount{
         font-size: 0.9em;
+        table{
+          margin-left: 40px;
+        }
         .totalamounttr{
           @include rounded;
           box-shadow: $shadow-subtle;
           background-color: rgb(224, 221, 221);
-          padding: 10px;
           font-size: 1.5em;
         }
         .th{
           padding-right: 150px;
-        }
-        td{
-          padding-left: 35px;
+          // padding-left: 35px;
         }
       }
     }
@@ -537,7 +538,7 @@ footer {
       width:70%;
       margin: 20px;
       h3{
-        font-size: 1.1em;
+        font-size: 1.3em;
       }
     }
     button{
@@ -548,4 +549,83 @@ footer {
     }
   }
 }
-
+.orders{
+  ul{
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+    grid-gap: 30px 50px;
+    margin: 0 20px;
+  }
+  li{
+    background-color: white;
+    color: $darkslategray;
+    padding: 10px;
+    @include rounded;
+    box-shadow: $shadow-subtle;
+    position: relative;
+  }
+  p,.nameprice{
+    color: $darkslategray;
+  }
+  .pimage{
+    margin: 10px 0;
+    width: 70px;
+  }
+  .nameprice{
+    top:70px;
+    left:100px;
+    position: absolute;
+    font-size: 1.2em;
+  }
+  .oship{
+    position: absolute;
+    right:15px;
+    color: black;
+    font-size: 0.9em;
+  }
+  .delivered,.tobeDelivered{
+    color:white;
+    text-align: center;
+    border-radius: 30px;
+    position: absolute;
+    bottom:20px;
+    right:20px;
+    font-style: italic;
+  }
+  .delivered{
+    background-color:green;
+    width: 20%;
+  }
+  .tobeDelivered{
+    background-color:orange;
+    width: 30%;
+  }
+  h1{
+    color: $darkslategray;
+    background-color: white;
+    box-shadow: $shadow-subtle;
+    border-radius: 30px;
+    width: fit-content;
+    margin: 20px auto;
+    padding:5px 10px;
+  }
+}
+.myAccount{
+  td{
+    padding: 20px;
+    border: 1px solid;
+  }
+  a{
+    border: 1px solid;
+    margin-left: 20px;
+    padding:5px 10px;
+    &:hover{
+      background-color: white;
+      color:$darkslategray;
+      font-weight: bold;
+    }
+  }
+  table{
+    margin:20px
+  }
+}
