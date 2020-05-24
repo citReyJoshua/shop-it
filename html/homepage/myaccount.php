@@ -2,6 +2,8 @@
   session_start();
   $con = mysqli_connect("localhost","root","","OnlineShop");
   $flag = isset($_SESSION["Username"]);
+  $username = $_SESSION['Username'];
+  $id =  mysqli_query($con, "select userid from user where username = '$username'")->fetch_assoc()['userid'];
 ?>
 
 <!DOCTYPE html>
@@ -53,36 +55,42 @@
         </li>
         
         <li class="nav__item font-8" style="display: flex;">
-          <ul
+        <ul
             class="user-selection slide-left"
             id="user-links"
             style="display: none; margin-right: -70px;"
           >
-            <li class="selection__container">
-              <a 
-                href="myaccount.php"
-                class="selection__item">My Account</a>
-            </li>
-            <li class="selection__container">
+          <li class="selection__container">
               <a
-                href="../login-and-sign-up/log-in-and-sign-up.php"
+                href="index.php"
                 class="selection__item"
-                >Login</a
-              >
+                >Home </a>
             </li>
-            <li class="selection__container">
-              <a
-                href="../login-and-sign-up/log-in-and-sign-up.php"
-                class="selection__item"
-                >Sign up
-              </a>
-            </li>
+          <?php
+            if(!$flag){
+              echo '<li class="selection__container">
+                      <a
+                        href="../login-and-sign-up/log-in-and-sign-up.php"
+                        class="selection__item"
+                        >Login</a
+                      >
+                    </li>
+                    <li class="selection__container">
+                      <a
+                        href="../login-and-sign-up/log-in-and-sign-up.php"
+                        class="selection__item"
+                        >Sign up
+                      </a>
+                    </li>';
+            }
+          ?>
+            
             <?php
               if($flag){
                 echo '<li class="selection__container">
-                        <a class="selection__item" href="logout.php" name="logout">
-                          Log out
-                        </a>
+                        <a 
+                          href="myaccount.php"
+                          class="selection__item">My Account</a>
                       </li>
                       <li class="selection__container">
                         <a class="selection__item" href="sell.php">
@@ -94,12 +102,16 @@
                           <i class="fa fa-shopping-cart"></i>
                         </a>
                       </li>
+                      <li class="selection__container">
+                        <a class="selection__item" href="logout.php" name="logout">
+                          Log out
+                        </a>
+                      </li>
                       ';
               }
             ?>
 
           </ul>
-
           <button class="btn-user" onclick="ToggleSlide()">
             
             <img class="img" src="../../core/images/user.png" alt="User" />
@@ -111,6 +123,9 @@
     </div>
     <div class="myAccount">
         <a href="orders.php">My orders</a>
+        <h1>ACCOUNT DETAILS</h1>
+        <p style="color:white">*click on the desired field in your product to edit*</p>
+        <p style="color:white">Note: you can only edit one at a time</p>
     <?php
         $Username = $_SESSION['Username'];
         $sql = "select * from user where Username = '$Username'";
@@ -118,20 +133,20 @@
         echo "<table>";
         while($result_row = $result->fetch_assoc()){
             echo "<tr>
-                <td>Username:</td>
-                <td>".$result_row['Username']."</td>
+                <td>Username</td>
+                <td id='tdval'>".$result_row['Username']."</td>
             </tr>
             <tr>
-                <td>Email:</td>
-                <td>".$result_row['Email']."</td>
+                <td>Email</td>
+                <td id='tdval'>".$result_row['Email']."</td>
             </tr>
             <tr>
-                <td>address:</td>
-                <td>".$result_row['Address']."</td>
+                <td>Address</td>
+                <td id='tdval'>".$result_row['Address']."</td>
             </tr>
             <tr>
-                <td>Contact:</td>
-                <td>".$result_row['Contact']."</td>
+                <td>Contact</td>
+                <td id='tdval'>".$result_row['Contact']."</td>
             </tr>";
         }
         echo "</table>";
@@ -141,6 +156,47 @@
       Made by Rey Joshua H. Macarat and Jonathan Jubeth Ollave <br />
       © 2020 F1. All Rights Reserved.
     </footer>
+    <script>
+      var flag = true;
+      document.querySelector('table').addEventListener('click',(e)=>{ 
+        if(e.target.id === 'tdval' && flag){
+          console.log(e.target.parentElement.children[0].textContent);
+          var temp = e.target.textContent;
+          e.target.textContent = "";
+          var form = document.createElement("form");
+          form.action = "edituser.php";
+          form.method = "post";
+          e.target.appendChild(form);
+          var input = document.createElement("input");
+          input.type = "text";
+          input.value = temp;
+          input.name = 'input';
+          // input.name = e.target.parentElement.firstChild;
+          // console.log(e.target.parentElement.firstChild);
+          input.style.color = "black";
+          input.style.width = "350px";
+          input.style.padding = "2px 10px";
+          form.appendChild(input);
+
+          var confirm = document.createElement("button");
+          var cancel = document.createElement("button");
+          confirm.innerHTML="confirm";
+          confirm.style.color="black";
+          confirm.type = 'submit';
+          confirm.name = 'columnname';
+          confirm.value = e.target.parentElement.children[0].textContent;
+
+          cancel.innerHTML="cancel";
+          cancel.style.color="black";
+          cancel.type = 'button';
+          cancel.addEventListener("click",()=>{ location.reload();});
+          form.appendChild(confirm);
+          form.appendChild(cancel);
+
+          flag = false;
+        }
+      })
+    </script>
     <script src="../../core/js/main.js"></script>
   </body> 
 </html>

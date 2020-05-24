@@ -55,36 +55,42 @@
         </li>
         
         <li class="nav__item font-8" style="display: flex;">
-          <ul
+        <ul
             class="user-selection slide-left"
             id="user-links"
             style="display: none; margin-right: -70px;"
           >
-            <li class="selection__container">
-                <a 
-                href="myaccount.php"
-                class="selection__item">My Account</a>
-            </li>
-            <li class="selection__container">
+          <li class="selection__container">
               <a
-                href="../login-and-sign-up/log-in-and-sign-up.php"
+                href="index.php"
                 class="selection__item"
-                >Login</a
-              >
+                >Home </a>
             </li>
-            <li class="selection__container">
-              <a
-                href="../login-and-sign-up/log-in-and-sign-up.php"
-                class="selection__item"
-                >Sign up
-              </a>
-            </li>
+          <?php
+            if(!$flag){
+              echo '<li class="selection__container">
+                      <a
+                        href="../login-and-sign-up/log-in-and-sign-up.php"
+                        class="selection__item"
+                        >Login</a
+                      >
+                    </li>
+                    <li class="selection__container">
+                      <a
+                        href="../login-and-sign-up/log-in-and-sign-up.php"
+                        class="selection__item"
+                        >Sign up
+                      </a>
+                    </li>';
+            }
+          ?>
+            
             <?php
               if($flag){
                 echo '<li class="selection__container">
-                        <a class="selection__item" href="logout.php" name="logout">
-                          Log out
-                        </a>
+                        <a 
+                          href="myaccount.php"
+                          class="selection__item">My Account</a>
                       </li>
                       <li class="selection__container">
                         <a class="selection__item" href="sell.php">
@@ -94,6 +100,11 @@
                       <li class="selection__container">
                         <a class="selection__item" href="cart.php">
                           <i class="fa fa-shopping-cart"></i>
+                        </a>
+                      </li>
+                      <li class="selection__container">
+                        <a class="selection__item" href="logout.php" name="logout">
+                          Log out
                         </a>
                       </li>
                       ';

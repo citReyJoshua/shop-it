@@ -150,6 +150,7 @@ body {
   -webkit-box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
           box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
   margin-bottom: 4em;
+  cursor: pointer;
   border-radius: 0.6em;
 }
 
@@ -184,8 +185,10 @@ body {
 }
 
 .card__description--bigger {
-  margin: 1em;
+  margin: 0 1em 1em 1em;
   font-size: 150%;
+  height: 70px;
+  overflow: auto;
 }
 
 .card__image {
@@ -323,7 +326,7 @@ footer {
   display: none;
   position: fixed;
   width: 30vw;
-  height: 100%;
+  height: 100vh;
   top: 0;
   right: 0;
   background-color: #727d80;
@@ -762,11 +765,21 @@ footer {
   font-size: 1.3em;
 }
 
-.modal-checkout-content button {
-  width: 20%;
+.modal-checkout-content .buttons {
+  width: 45%;
   margin: 20px;
-  position: relative;
-  left: 180px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.modal-checkout-content .buttons button {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .orders ul {
@@ -861,8 +874,17 @@ footer {
   font-weight: bold;
 }
 
-.myAccount table {
+.myAccount table, .myAccount h1 {
   margin: 20px;
+}
+
+.myAccount #tdval:hover {
+  cursor: pointer;
+}
+
+.myAccount p {
+  margin-left: 20px;
+  font-size: 0.9em;
 }
 
 .slide-left {

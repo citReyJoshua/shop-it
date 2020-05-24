@@ -46,36 +46,42 @@
           </div>
         </li>
         <li class="nav__item font-8" style="display: flex;">
-          <ul
+        <ul
             class="user-selection slide-left"
             id="user-links"
             style="display: none; margin-right: -70px;"
           >
-            <li class="selection__container">
-              <a 
-                href="myaccount.php"
-                class="selection__item">My Account</a>
-            </li>
-            <li class="selection__container">
+          <li class="selection__container">
               <a
-                href="../login-and-sign-up/log-in-and-sign-up.php"
+                href="index.php"
                 class="selection__item"
-                >Login</a
-              >
+                >Home </a>
             </li>
-            <li class="selection__container">
-              <a
-                href="../login-and-sign-up/log-in-and-sign-up.php"
-                class="selection__item"
-                >Sign up
-              </a>
-            </li>
+          <?php
+            if(!$flag){
+              echo '<li class="selection__container">
+                      <a
+                        href="../login-and-sign-up/log-in-and-sign-up.php"
+                        class="selection__item"
+                        >Login</a
+                      >
+                    </li>
+                    <li class="selection__container">
+                      <a
+                        href="../login-and-sign-up/log-in-and-sign-up.php"
+                        class="selection__item"
+                        >Sign up
+                      </a>
+                    </li>';
+            }
+          ?>
+            
             <?php
               if($flag){
                 echo '<li class="selection__container">
-                        <a class="selection__item" href="logout.php" name="logout">
-                          Log out
-                        </a>
+                        <a 
+                          href="myaccount.php"
+                          class="selection__item">My Account</a>
                       </li>
                       <li class="selection__container">
                         <a class="selection__item" href="sell.php">
@@ -85,6 +91,11 @@
                       <li class="selection__container">
                         <a class="selection__item" href="cart.php">
                           <i class="fa fa-shopping-cart"></i>
+                        </a>
+                      </li>
+                      <li class="selection__container">
+                        <a class="selection__item" href="logout.php" name="logout">
+                          Log out
                         </a>
                       </li>
                       ';
@@ -104,18 +115,18 @@
     <div class="titles">
       <a href="products.php">Products</a>
     </div>
-    <div class="gallery">
+    <div class="gallery" id = "gallery">
       <ul class="gallery-items">
 
         <?php
           $search = $_POST['search'];
           if($search!=""){
-          $sql = "select ProductName, Price, Image,Description from Product where ProductName LIKE '%$search%' ";
+          $sql = "select ProductID,ProductName, Price, Image,Description from Product where ProductName LIKE '%$search%' ";
           $result = mysqli_query($con, $sql) or die($con->error);
           
           while($result_row = $result->fetch_assoc()){
             echo '<li class="gallery__item">
-                <div class="card">
+                <div class="card" onclick="ToggleModal(event)">
                 <div class="card__image">
                 <img
                 src="../../core/images/' . $result_row['Image'] . 
@@ -130,9 +141,11 @@
                 '</span>
                 </div>
                 <div class="card__button">
-                  <button class="btn-buy" onclick="ToggleModal()">
+                  <form action="addtocart.php" method="post">
+                  <button type="submit" class="btn-buy" id="add2cartbtn" name="pid" value = "'.$result_row['ProductID'].'">
                     Add to cart
                   </button>
+                  </form>
                 </div>
               </div>
             </li>';
@@ -149,26 +162,26 @@
           src="../../core/images/dress.png"
           alt="product-image"
           class="product-image--bigger"
+          id = "modalimg"
         />
       </div>
 
-      <div class="card__product-name--bigger">
-        Designer<br />
-        <span>
-          P500
+      <div class="card__product-name--bigger" id = "modalpname">
+        <br />
+        <span id = "modalprice"> 
+          
         </span>
       </div>
-      <div class="card__description--bigger">
-        Lorem ipsum cannot help me in this stupid world of great trouble that im
-        having today.
+      <div class="card__description--bigger" id = "modaldesc">
+        
       </div>
-      <button class="btn-modal" onclick="Snack()">
-        BUY
+      <button class="btn-modal" id="btn-modal" onclick="Snack()">
+        ADD TO CART
       </button>
     </div>
     <div id="snackbar">
       <div id="snackbar__content">
-        Purchase Complete
+        ADDED TO CART
       </div>
     </div>
     <footer>

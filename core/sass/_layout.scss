@@ -89,6 +89,7 @@
   background-color: white;
   box-shadow: $shadow-subtle;
   margin-bottom: 4em;
+  cursor:pointer;
   @include rounded;
   @include elem(product-name) {
     flex-grow: 1;
@@ -113,8 +114,10 @@
     color: $color-text;
     margin: 0.5em;
     @include mod(bigger) {
-      margin: 1em;
+      margin: 0 1em 1em 1em;
       font-size: 150%;
+      height: 70px;
+      overflow: auto;
     }
   }
   @include elem(image) {
@@ -219,7 +222,7 @@ footer {
   display: none;
   position: fixed;
   width: 30vw;
-  height: 100%;
+  height: 100vh;
   top: 0;
   right: 0;
   background-color: $color-modal;
@@ -541,12 +544,15 @@ footer {
         font-size: 1.3em;
       }
     }
-    button{
-      width:20%;
-      margin:20px;
-      position: relative;
-      left:180px;
-    }
+    .buttons{
+      width: 45%;
+      margin: 20px;
+      display: flex;
+      justify-content: space-between;
+      button{
+        width:fit-content;
+      }
+    }  
   }
 }
 .orders{
@@ -625,7 +631,16 @@ footer {
       font-weight: bold;
     }
   }
-  table{
+  table,h1{
     margin:20px
+  }
+  #tdval{
+    &:hover{
+      cursor: pointer;
+    }
+  }
+  p{
+    margin-left: 20px;
+    font-size: 0.9em;
   }
 }

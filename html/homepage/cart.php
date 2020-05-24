@@ -4,7 +4,7 @@
   $flag = isset($_SESSION["Username"]);
   $username = $_SESSION['Username'];
   $id =  mysqli_query($con, "select userid from user where username = '$username'")->fetch_assoc()['userid'];
-  $count = mysqli_query($con, "select count(*) as count from cart")->fetch_assoc()['count'];
+  $count = mysqli_query($con, "select count(*) as count from cart where userid = $id")->fetch_assoc()['count'];
   if(!$count){
     echo "<script>
     alert('your cart is empty, go shopping?');
@@ -62,36 +62,42 @@
         </li>
         
         <li class="nav__item font-8" style="display: flex;">
-          <ul
+        <ul
             class="user-selection slide-left"
             id="user-links"
             style="display: none; margin-right: -70px;"
           >
-            <li class="selection__container">
-              <a 
-                href="myaccount.php"
-                class="selection__item">My Account</a>
-            </li>
-            <li class="selection__container">
+          <li class="selection__container">
               <a
-                href="../login-and-sign-up/log-in-and-sign-up.php"
+                href="index.php"
                 class="selection__item"
-                >Login</a
-              >
+                >Home </a>
             </li>
-            <li class="selection__container">
-              <a
-                href="../login-and-sign-up/log-in-and-sign-up.php"
-                class="selection__item"
-                >Sign up
-              </a>
-            </li>
+          <?php
+            if(!$flag){
+              echo '<li class="selection__container">
+                      <a
+                        href="../login-and-sign-up/log-in-and-sign-up.php"
+                        class="selection__item"
+                        >Login</a
+                      >
+                    </li>
+                    <li class="selection__container">
+                      <a
+                        href="../login-and-sign-up/log-in-and-sign-up.php"
+                        class="selection__item"
+                        >Sign up
+                      </a>
+                    </li>';
+            }
+          ?>
+            
             <?php
               if($flag){
                 echo '<li class="selection__container">
-                        <a class="selection__item" href="logout.php" name="logout">
-                          Log out
-                        </a>
+                        <a 
+                          href="myaccount.php"
+                          class="selection__item">My Account</a>
                       </li>
                       <li class="selection__container">
                         <a class="selection__item" href="sell.php">
@@ -103,12 +109,16 @@
                           <i class="fa fa-shopping-cart"></i>
                         </a>
                       </li>
+                      <li class="selection__container">
+                        <a class="selection__item" href="logout.php" name="logout">
+                          Log out
+                        </a>
+                      </li>
                       ';
               }
             ?>
 
           </ul>
-
           <button class="btn-user" onclick="ToggleSlide()">
             
             <img class="img" src="../../core/images/user.png" alt="User" />
@@ -261,7 +271,11 @@
               ."</div>";
             }
           ?>
-          <button class="btn-buy" id="confirm-checkout">confirm</button>
+          <div class="buttons">
+            <button class="btn-buy" id="editinfo">edit info</button>
+            <button class="btn-buy" id="confirm-checkout">confirm</button>
+          </div>
+          
         </div>
       </div>
     <footer>
@@ -283,13 +297,16 @@
     }
     document.getElementById("checkoutbtn").addEventListener("click",()=>{
       document.getElementById("modalCheckout").style.display="block";
-    })
+    });
     function Close(){
       document.getElementById("modalCheckout").style.display="none";
     }
     document.querySelector("#confirm-checkout").addEventListener("click",()=>{
       window.location.href = ("http://localhost/git-shopit/Source%20Code/stylesworth-%20Online%20Fashion%20Shop/html/homepage/checkout.php")
-    })
+    });
+    document.querySelector("#editinfo").addEventListener("click",()=>{
+      window.location.href = ("http://localhost/git-shopit/Source%20Code/stylesworth-%20Online%20Fashion%20Shop/html/homepage/myaccount.php")
+    });
     </script>
   </body>
 </html>
