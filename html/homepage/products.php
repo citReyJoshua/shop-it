@@ -118,7 +118,6 @@
           
         </li>
       </ul>
-      
     </div>
     <div class="titles">
       <a href="products.php">Products</a>
@@ -126,7 +125,7 @@
     <div class="gallery" id = "gallery">
       <ul class="gallery-items">
         <?php
-          $sql = "select ProductID,ProductName, Price, Image,Description from Product";
+          $sql = "select ProductID,ProductName, Price, Image,Description,quantity from Product";
           $result = mysqli_query($con, $sql);
           while($result_row = $result->fetch_assoc()){
             echo '<li class="gallery__item">
@@ -144,9 +143,10 @@
                   <span class="clr-black"> $' . $result_row['Price'] .
                 '</span>
                 </div>
-                <div class="card__button">
                 <form action="addtocart.php" method="post">
-                  <button type="submit" class="btn-buy" id="add2cartbtn" name="pid" value = "'.$result_row['ProductID'].'">
+                <input type="number" class="quantity" value="1" name="quantity" min="1" max = "'.$result_row['quantity'].'"/>
+                <div class="card__button">
+                  <button type="submit" class="btn-buy" name="pid" value = "'.$result_row['ProductID'].'">
                     Add to cart
                   </button>
                 </form>

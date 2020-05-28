@@ -121,34 +121,35 @@
         <?php
           $search = $_POST['search'];
           if($search!=""){
-          $sql = "select ProductID,ProductName, Price, Image,Description from Product where ProductName LIKE '%$search%' ";
+          $sql = "select ProductID,ProductName, Price, Image,Description,quantity from Product where ProductName LIKE '%$search%' ";
           $result = mysqli_query($con, $sql) or die($con->error);
           
           while($result_row = $result->fetch_assoc()){
-            echo '<li class="gallery__item">
-                <div class="card" onclick="ToggleModal(event)">
-                <div class="card__image">
-                <img
-                src="../../core/images/' . $result_row['Image'] . 
-                '"alt="product-image"
-                class="product-image"
-                />' . '</div>
-                <div class="card__description">' . $result_row['Description'] .
-                '</div>
-                <div class="card__product-name">
-                  '. $result_row['ProductName'] . '<br />
-                  <span class="clr-black"> $' . $result_row['Price'] .
-                '</span>
-                </div>
-                <div class="card__button">
-                  <form action="addtocart.php" method="post">
-                  <button type="submit" class="btn-buy" id="add2cartbtn" name="pid" value = "'.$result_row['ProductID'].'">
-                    Add to cart
-                  </button>
-                  </form>
-                </div>
-              </div>
-            </li>';
+            echo  echo '<li class="gallery__item">
+            <div class="card" onclick="ToggleModal(event)">
+            <div class="card__image">
+            <img
+            src="../../core/images/' . $result_row['Image'] . 
+            '"alt="product-image"
+            class="product-image"
+            />' . '</div>
+            <div class="card__description">' . $result_row['Description'] .
+            '</div>
+            <div class="card__product-name">
+              '. $result_row['ProductName'] . '<br />
+              <span class="clr-black"> $' . $result_row['Price'] .
+            '</span>
+            </div>
+            <form action="addtocart.php" method="post">
+            <input type="number" class="quantity" value="1" name="quantity" min="1" max = "'.$result_row['quantity'].'"/>
+            <div class="card__button">
+              <button type="submit" class="btn-buy" name="pid" value = "'.$result_row['ProductID'].'">
+                Add to cart
+              </button>
+            </form>
+            </div>
+          </div>
+        </li>';
           }
         }
         ?>

@@ -10,14 +10,16 @@ function ToggleSlide() {
   }
 }
 function ToggleModal(event) {
-  if(event.target.tagName!=='BUTTON'){
   let modal = document.getElementById("modal");
+
+  if(event.target.tagName!=='BUTTON' && event.target.tagName!=='INPUT'){
 
   // if (modal.style.display === "block") {
   //   modal.style.display = "none";
   // } else {
   //   modal.style.display = "block";
   // }
+  // console.log(event.target);
   modal.style.display = "block";
   var t;
   if(event.target.className==='card'){
@@ -30,7 +32,7 @@ function ToggleModal(event) {
     t = event.target.parentNode;
   }
   
-  // console.log(t);
+  // console.log(t.children[3].children[1].children[0].value);
 
   var img = t.children[0].children[0].src;
   var pname = t.children[2].childNodes[0].textContent;
@@ -46,14 +48,23 @@ function ToggleModal(event) {
   var form = document.createElement("form");
   form.action = "addtocart.php";
   form.method = "post";
-
+  form.id = "form-modal";
   var btnmodal = document.getElementById("btn-modal");
   btnmodal.type = "submit";
   btnmodal.name = "pid";
-  btnmodal.value = t.children[3].children[0].children[0].value;
+  // console.log(t.children);
+  btnmodal.value = t.children[3].children[1].children[0].value;
 
   btnmodal.parentNode.insertBefore(form,btnmodal);
+  
+  var hiddeninput = document.createElement('input');
+  hiddeninput.type = 'hidden';
+  hiddeninput.name = 'quantity';
+  hiddeninput.value = '1';
+  form.appendChild(hiddeninput);
   form.appendChild(btnmodal);
+  
+  // console.log(t.children[3].children[0].value);
   // console.log(btnmodal.parentElement.parentElement);
 
   var cardsClasses = document.getElementsByClassName('card');
@@ -66,6 +77,10 @@ function ToggleModal(event) {
   t.style.background = "#4287f5";
   t.children[1].style.color = "white";
   t.children[2].style.color = "white";
+}
+else if(event.target.tagName==='INPUT'&& modal.style.display ==='block'){
+  console.log(event.target.value);
+  document.getElementById("form-modal").children[0].value = event.target.value;
 }
 }
 

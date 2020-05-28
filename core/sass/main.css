@@ -152,6 +152,7 @@ body {
   margin-bottom: 4em;
   cursor: pointer;
   border-radius: 0.6em;
+  position: relative;
 }
 
 .card__product-name {
@@ -201,6 +202,21 @@ body {
       -ms-flex-positive: 0.5;
           flex-grow: 0.5;
   margin: 0 0.5em;
+}
+
+.card input.quantity {
+  width: 40px;
+  color: black;
+  position: absolute;
+  bottom: 75px;
+  right: 30px;
+  background-color: #e0e0e0;
+  border: 1px solid #e0e0e0;
+}
+
+.card input[type=number]::-webkit-inner-spin-button,
+.card input[type=number]::-webkit-outer-spin-button {
+  opacity: 1;
 }
 
 .gallery {
@@ -459,6 +475,15 @@ footer {
 
 .cart-page .cart-list {
   width: 50%;
+}
+
+.cart-page .cart-list .quan {
+  color: #3b4445;
+  position: absolute;
+  bottom: 75px;
+  right: 40px;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 .cart-page .checkout {

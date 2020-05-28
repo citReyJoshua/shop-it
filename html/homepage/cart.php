@@ -139,7 +139,7 @@
     <ul class="gallery-items">
     <?php
     if($flag && $count){
-        $sql = "select cartID,ProductName, Price, Image,Description from Product p join cart c where c.userid = '$id' and p.ProductID = c.ProductID";
+        $sql = "select cartID,ProductName, Price, Image,Description,c.quantity as cquan from Product p join cart c where c.userid = '$id' and p.ProductID = c.ProductID";
         $result = mysqli_query($con, $sql) or die($con->error);
         
         while($result_row = $result->fetch_assoc()){
@@ -158,9 +158,10 @@
                   <span class="clr-black"> $' . $result_row['Price'] .
                 '</span>
                 </div>
+                <div class="quan">x'.$result_row['cquan'].'</div>
                 <div class="card__button">
                   <form action="removefromcart.php" method = "post">
-                  <button type="submit" class="btn-buy" onclick="ToggleModal()" name="cid" value = "'.$result_row['cartID'].'">
+                  <button type="submit" class="btn-buy" name="cid" value = "'.$result_row['cartID'].'">
                     remove
                   </button>
                   </form>
@@ -189,11 +190,20 @@
         $items = 0;
         while($result_row = $result->fetch_assoc()){
           $items++;
-          $sum+=$result_row['Price'];
+            if($result_row['cquan']>1){
+            $sum+=$result_row['Price']*$result_row['cquan'];
+            echo '<tr>
+            <td class="prodname">'.$result_row['ProductName'].' (x'.$result_row['cquan'].')</td>
+            <td>'."$".$result_row['Price']*$result_row['cquan'].'</td>
+            </tr>';
+            }
+            else{
+            $sum+=$result_row['Price'];
             echo '<tr>
             <td class="prodname">'.$result_row['ProductName'].'</td>
             <td>'."$".$result_row['Price'].'</td>
             </tr>';
+            }
         }
         echo "</table>";
         echo "<hr><h1 class='sum'><span class='total'>TOTAL</span>$".$sum."</h1>";

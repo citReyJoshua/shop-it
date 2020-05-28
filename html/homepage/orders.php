@@ -126,7 +126,7 @@
         <h1>ORDER DETAILS</h1>
         <?php
             $con = mysqli_connect("localhost","root","","OnlineShop");
-            $sql = "select s.CompanyName,s.deliveryTime,o.orderid,o.date,p.image,p.productname,p.price from order_details o join product p join shipping s where o.userid=$uid and p.productid=o.productid and s.shippingid=o.shippingid order by date desc";
+            $sql = "select s.CompanyName,s.deliveryTime,o.orderid,o.date,p.image,p.productname,p.price,o.quantity from order_details o join product p join shipping s where o.userid=$uid and p.productid=o.productid and s.shippingid=o.shippingid order by date desc";
             $result = mysqli_query($con, $sql) or die($con->error);
             $delivered = "<p class='delivered'>Delivered</p>";
             $tobeDelivered = "<p class='tobeDelivered'>To be delivered</p>";
@@ -146,6 +146,7 @@
                 }
                 else echo $tobeDelivered;
                 
+                echo "x".$result_row['quantity'];
                 echo "</li>";
             }
             echo "</ul>";
