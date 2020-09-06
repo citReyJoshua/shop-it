@@ -227,7 +227,7 @@
             flag = false;
             cancel.addEventListener("click",()=>{ location.reload();});
           }
-          else if(event.target.id === "Image"){
+          else if(event.target.id === "Image" && flag){
             var id = event.target.parentElement.lastChild.querySelector('form').querySelector('button').value;
             var form = document.createElement('form');
             form.action = 'uploadimg.php';
@@ -247,6 +247,7 @@
             button.style.padding = '0';
             button.style.color = 'black';
             form.appendChild(button);
+            flag = false;
           }
         });
 

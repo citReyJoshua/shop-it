@@ -94,7 +94,7 @@ function validateFormReg() {
       $Password=$_POST['SignInPassword'];
   
 
-      $sql="select count(*) as count from User where Username= '$Username'";
+      $sql="select count(*) as count from User where BINARY Username= '$Username'";
       $result=mysqli_query($con, $sql) or die("Invalid query");
       $row =mysqli_fetch_array($result);
 
@@ -106,7 +106,7 @@ function validateFormReg() {
       $rowpass =mysqli_fetch_array($resultpass);
 
       if($row[0]==1){
-        $sql = "select count(*) from User where Username = '$Username' AND Password = '$Password'";
+        $sql = "select count(*) from User where Username = '$Username' AND BINARY Password = '$Password'";
         $result = mysqli_query($con, $sql);
         $row = mysqli_fetch_array($result);
         if($row[0]==1){
@@ -124,7 +124,7 @@ function validateFormReg() {
   }
   else{
     echo '<script language="javascript">';
-    echo 'alert("Incorrect username.")'; 
+    echo 'alert("Username does not exist.")'; 
     echo '</script>';
   }
 }

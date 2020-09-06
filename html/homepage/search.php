@@ -123,9 +123,12 @@
           if($search!=""){
           $sql = "select ProductID,ProductName, Price, Image,Description,quantity from Product where ProductName LIKE '%$search%' ";
           $result = mysqli_query($con, $sql) or die($con->error);
-          
+          echo "<script>
+          // console.log();
+          document.querySelector('.search').children[0].children[0].value = '".$search."'
+          </script>";
           while($result_row = $result->fetch_assoc()){
-            echo  echo '<li class="gallery__item">
+            echo '<li class="gallery__item">
             <div class="card" onclick="ToggleModal(event)">
             <div class="card__image">
             <img

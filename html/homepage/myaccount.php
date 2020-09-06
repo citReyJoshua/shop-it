@@ -124,7 +124,7 @@
     <div class="myAccount">
         <a href="orders.php">My orders</a>
         <h1>ACCOUNT DETAILS</h1>
-        <p style="color:white">*click on the desired field in your product to edit*</p>
+        <p style="color:white">*click on the desired field in your user info to edit*</p>
         <p style="color:white">Note: you can only edit one at a time</p>
     <?php
         $Username = $_SESSION['Username'];
@@ -175,6 +175,8 @@
           // console.log(e.target.parentElement.firstChild);
           input.style.color = "black";
           input.style.width = "350px";
+          // input.style.width = "fit-content";
+
           input.style.padding = "2px 10px";
           form.appendChild(input);
 

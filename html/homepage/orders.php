@@ -130,7 +130,7 @@
             $result = mysqli_query($con, $sql) or die($con->error);
             $delivered = "<p class='delivered'>Delivered</p>";
             $tobeDelivered = "<p class='tobeDelivered'>To be delivered</p>";
-            $shipping = mysqli_query($con, "select * from shipping s join order_details o where s.ShippingID=o.ShippingID")->fetch_assoc();
+            // $shipping = mysqli_query($con, "select * from shipping s join order_details o where s.ShippingID=o.ShippingID")->fetch_assoc();
             echo "<ul>";
             while($result_row = $result->fetch_assoc()){
                 echo "<li>
@@ -140,7 +140,9 @@
                 "<img src='../../core/images/".$result_row['image']."'class='pimage'/>".
                 "<div class='nameprice'><p>".$result_row['productname']."</p>".
                 "<p>$".$result_row['price']."</p></div>";
-                $Date = date("Y-m-d",strtotime("-".$shipping['deliveryTime']." days"));
+                $Date = date("Y-m-d",strtotime("-".$result_row['deliveryTime']." days"));
+
+                echo $Date;
                 if($Date>=$result_row['date']){
                     echo $delivered;
                 }
